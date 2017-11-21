@@ -487,10 +487,10 @@ function control(){
               
            // ongoingTouches.push(copyTouch(touches[i]));
             var color = 'black';//colorForTouch(touches[i]);
-            ctx.beginPath();
-            ctx.arc(x, y, 10, 0, 2 * Math.PI, false);  // a circle at the start
-            ctx.fillStyle = color;
-            ctx.fill();
+            //ctx.beginPath();
+            //ctx.arc(x, y, 10, 0, 2 * Math.PI, false);  // a circle at the start
+            //ctx.fillStyle = color;
+            //ctx.fill();
           // log("touchstart:" + x+'>'+bl*2+"...");//log("touchstart:" + i + ".");
             log("touchstart:" + x+'<'+(bl*2+bl*3)+"...");
             console.log(x+' x -КанвасМенюГейм- y '+y)
