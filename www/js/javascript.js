@@ -31,13 +31,16 @@
         //conv
      //var window = document.getElementById("conv");   
 
-        
+        var box = document.getElementById("conv");
+        var Wbox = box.clientHeight || box.offsetHeight;
+        var Hbox = box.clientWidth || box.offsetWidth;
+        //td.getAttribute('height') // 
     canvas = document.getElementById("snaki");
     ctx = canvas.getContext('2d'); 
     canvas.style.zIndex = 7;    
         if(window.screen.width<window.screen.height){
-            var razmX = screen.width;
-           
+            var razmX = Hbox;
+           alert(razmX);
           // document.getElementById("conv").style.width = '100%'; 
         //   document.getElementById("conv").style.height = razmX+'px%'; 
             
@@ -51,8 +54,8 @@
 
             //console.log(screen.width+'Ширина экрана'+screen.height+'Высота экрана');
            }else if(window.screen.width>window.screen.height){
-                var razmX = document.body.clientHeight;  
-               
+                var razmX = Wbox;  
+              
           //  document.getElementById("conv").style.width = '100%';
          //  document.getElementById("conv").style.height = razmX+'px';               
                
