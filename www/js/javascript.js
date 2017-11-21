@@ -383,7 +383,7 @@ function control(){
 
             ctx.fillStyle="white";
         ctx.fillRect(bl*2,bl*20+bl/2,bl*3,bl*2+bl/2);
-
+        log("Левая кнопка x- "+bl*2+' y- '+(bl*20+bl/2)+' ширина- '+bl*3+' высота- '+(bl*2+bl/2));
             ctx.fillStyle="white";
         ctx.fillRect(bl*6,bl*20+bl/2,bl*3,bl*2+bl/2);
 
