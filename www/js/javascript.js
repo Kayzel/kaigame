@@ -35,7 +35,7 @@
     canvas = document.getElementById("snaki");
     ctx = canvas.getContext('2d'); 
     canvas.style.zIndex = 7;    
-        if(screen.width<screen.height){
+        if(window.screen.width<window.screen.height){
             var razmX = window.screen.width;
            
            document.getElementById("conv").style.width = '100%'; 
@@ -50,7 +50,7 @@
            //document.getElementsByTagName('body')[0].style.height = razmX+'px';
 
             //console.log(screen.width+'Ширина экрана'+screen.height+'Высота экрана');
-           }else if(screen.width>screen.height){
+           }else if(window.screen.width>window.screen.height){
                 var razmX = window.screen.height;  
                
             document.getElementById("conv").style.width = razmX+'px';
@@ -99,10 +99,10 @@
 //объявления переменных    
  //переменная отвечающая за поле уровней сложности.
 var dl 
-    if(screen.width<screen.height){
+    if(window.screen.width<window.screen.height){
         var razmX = window.screen.width;
           dl = razmX;
-           }else if(screen.width>screen.height){
+           }else if(window.screen.width>window.screen.height){
              var razmX = window.screen.height;   
            dl = razmX;
            }
