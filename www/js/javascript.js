@@ -108,13 +108,14 @@ var dl
            }
    
 var bl = dl /20;
-log('Версия игры 0.1 / размер ячейки '+bl);
+log('Версия игры 0.1 / размер ячейки '+bl+'начало панельки управления'+bl*20);
+log("высота канваса "+canvas.height+"...");     
 var muvet;
 var up, down, left, right; // кнопки
 var kuk;  //таймер
 var hx=hy=10; //координаты головы.
 var px=py=10; //координаты тела
-var gs=bl;
+var gs=bl; // размер ячейки
 var tc=20; 
 var ax=ay=15; // координаты яблока
 var rax=ray=15; // координаты гнилого яблока
@@ -376,6 +377,24 @@ function start() {
 
     
 function control(){
+    
+    ctx.fillStyle="#4a3737";
+        ctx.fillRect(0,bl*20,dl,bl*5);
+
+            ctx.fillStyle="white";
+        ctx.fillRect(bl*2,bl*20+bl/2,bl*3,bl*2+bl/2);
+
+            ctx.fillStyle="white";
+        ctx.fillRect(bl*6,bl*20+bl/2,bl*3,bl*2+bl/2);
+
+            ctx.fillStyle="white";
+        ctx.fillRect(bl*11,bl*20+bl/2,bl*3,bl*2+bl/2);
+
+            ctx.fillStyle="white";
+        ctx.fillRect(bl*15,bl*20+bl/2,bl*3,bl*2+bl/2);
+    
+    
+    
      picUp = new Image(); 
      picUp.src = 'img/up-128.png';
         picUp.onload = function() {
@@ -397,20 +416,7 @@ function control(){
             ctx.drawImage(picRight, bl*15,bl*20+bl/2,bl*3,bl*2+bl/2);
         }
     
-            ctx.fillStyle="#4a3737";
-        ctx.fillRect(0,bl*20,dl,bl*5);
-
-            ctx.fillStyle="white";
-        ctx.fillRect(bl*2,bl*20+bl/2,bl*3,bl*2+bl/2);
-
-            ctx.fillStyle="white";
-        ctx.fillRect(bl*6,bl*20+bl/2,bl*3,bl*2+bl/2);
-
-            ctx.fillStyle="white";
-        ctx.fillRect(bl*11,bl*20+bl/2,bl*3,bl*2+bl/2);
-
-            ctx.fillStyle="white";
-        ctx.fillRect(bl*15,bl*20+bl/2,bl*3,bl*2+bl/2);
+            
     
     
         
@@ -438,15 +444,20 @@ function control(){
             
             
               
-            x = touches[i].pageX - evt.target.offsetLeft;//e.pageX - e.target.offsetLeft,
-            y = touches[i].pageY - evt.target.offsetTop;//e.pageY - e.target.offsetTop; 
-            log("touchstart: x " + x+'<'+(bl*2+bl*3)+"...");  
+            x = touches[i].pageX;//e.pageX - e.target.offsetLeft,
+            y = touches[i].pageY;//e.pageY - e.target.offsetTop;
+            
+            log("touchstart: размер канваса "+dl+"...");  
+             
+            log("touchstart: размер ячейки "+bl+"...");   
+            log("touchstart: x " + x+'<'+(bl*2+bl*3)+"..."); 
+             
             log("touchstart: x " + x+'>'+bl*2+"...");//log("touchstart:" + x+'and'+y + "...");
              
             log("touchstart: y " + y+'>'+(bl*20+bl/2)+"...");
             log("touchstart: y " + y+'<'+(bl*20+bl/2+bl*2+bl/2)+"...");  
               
-            if((x>bl*2&&x<bl*2+bl*3)&&(y>bl*20+bl/2&&y<bl*20+bl/2+bl*2+bl/2)){
+            if((x>bl*2&&x<bl*2+bl*3)&&(y>(bl*20)+(bl/2)&&y<(bl*20)+(bl/2)+(bl*2)+(bl/2))){
                  xv= yv != 1 ?  0 : xv;
                  yv= yv != 1 ? -1 : yv;
                 log("условие выполнено");
