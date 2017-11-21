@@ -377,22 +377,22 @@ function start() {
     
 function control(){
      picUp = new Image(); 
-     picUp.src = 'https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-chevron-up-128.png';
+     picUp.src = 'img/up-128.png';
         picUp.onload = function() {
             ctx.drawImage(picUp, bl*2, bl*20+bl/2,bl*3,bl*2+bl/2);
         }
      picDown = new Image(); 
-     picDown.src = 'https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-chevron-down-128.png';
+     picDown.src = 'img/down-128.png';
         picDown.onload = function() {
             ctx.drawImage(picDown, bl*6,bl*20+bl/2,bl*3,bl*2+bl/2);
         }
      picLeft = new Image(); 
-     picLeft.src = 'https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-chevron-left-128.png';
+     picLeft.src = 'img/left-128.png';
         picLeft.onload = function() {
             ctx.drawImage(picLeft, bl*11,bl*20+bl/2,bl*3,bl*2+bl/2);
         }
      picRight = new Image(); 
-     picRight.src = 'https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-chevron-right-128.png';
+     picRight.src = 'img/right-128.png';
         picRight.onload = function() {
             ctx.drawImage(picRight, bl*15,bl*20+bl/2,bl*3,bl*2+bl/2);
         }
@@ -415,7 +415,18 @@ function control(){
             ctx.fillStyle="white";
     ctx.fillRect(bl*15,bl*20+bl/2,bl*3,bl*2+bl/2);
     
-    canvas.addEventListener('mousedown', function (e) {
+    
+    /*
+    function startup() {
+      var el = document.getElementsByTagName("canvas")[0];
+      el.addEventListener("touchstart", handleStart, false);
+      el.addEventListener("touchend", handleEnd, false);
+      el.addEventListener("touchcancel", handleCancel, false);
+      el.addEventListener("touchmove", handleMove, false);
+      log("initialized.");
+      }
+    */
+    canvas.addEventListener('touchstart', function (e) { // mousedown
     var x = e.pageX - e.target.offsetLeft,
         y = e.pageY - e.target.offsetTop;
         console.log(x+' x -КанвасМенюГейм- y '+y)
