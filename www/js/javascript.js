@@ -109,7 +109,7 @@ var dl
    
 var bl = dl /20;
 log('Версия игры 0.1 / размер ячейки '+bl+'начало панельки управления'+bl*20);
-log("высота канваса "+canvas.height+"...");     
+   
 var muvet;
 var up, down, left, right; // кнопки
 var kuk;  //таймер
