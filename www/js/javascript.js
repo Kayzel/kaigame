@@ -444,8 +444,8 @@ function control(){
             
             
               
-            x = touches[i].pageX;//e.pageX - e.target.offsetLeft,
-            y = touches[i].pageY;//e.pageY - e.target.offsetTop;
+            x = touches[i].pageX - evt.target.offsetLeft;//e.pageX - e.target.offsetLeft,
+            y = touches[i].pageY - evt.target.offsetTop;//e.pageY - e.target.offsetTop;
             
             log("touchstart: размер канваса "+dl+"...");  
              
