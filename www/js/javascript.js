@@ -9,7 +9,17 @@
        2. Убрать ускорение при нажатии на кнопку
                            
     */    
+        var num1 = JSON.parse(localStorage.getItem('1'));
+        var num2 = JSON.parse(localStorage.getItem('2'));
+        var num3 = JSON.parse(localStorage.getItem('3'));
+        var num4 = JSON.parse(localStorage.getItem('4'));
+        var num5 = JSON.parse(localStorage.getItem('5'));
         
+        if(localStorage.getItem('1') != null) {document.getElementById('recEazy').innerHTML = num1.kik;}
+        if(localStorage.getItem('2') != null) {document.getElementById('recEazy2').innerHTML = num2.kik;}
+        if(localStorage.getItem('3') != null) {document.getElementById('recEazy3').innerHTML = num3.kik;}
+        if(localStorage.getItem('4') != null) {document.getElementById('recEazy4').innerHTML = num4.kik;}
+        if(localStorage.getItem('5') != null) {document.getElementById('recEazy5').innerHTML = num5.kik;}
         
         /*
              var e =  event.offsetY;       
@@ -390,7 +400,7 @@ function control(){
 
             ctx.fillStyle="white";
         ctx.fillRect(bl*2,bl*20+bl/2,bl*3,bl*2+bl/2);
-            log("Левая кнопка x- "+bl*2+' y- '+(bl*20+bl/2)+' ширина- '+bl*3+' высота- '+(bl*2+bl/2));
+         //   log("Левая кнопка x- "+bl*2+' y- '+(bl*20+bl/2)+' ширина- '+bl*3+' высота- '+(bl*2+bl/2));
             ctx.fillStyle="white";
         ctx.fillRect(bl*6,bl*20+bl/2,bl*3,bl*2+bl/2);
 
