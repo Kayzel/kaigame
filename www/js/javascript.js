@@ -108,7 +108,7 @@ var dl
            }
    
 var bl = dl /20;
-console.log(bl);
+log('размер ячейки'+bl);
 var muvet;
 var up, down, left, right; // кнопки
 var kuk;  //таймер
@@ -586,8 +586,13 @@ function keyPush(event){
           var x, y;
           for (var i = 0; i < touches.length; i++) {
             x = touches[i].pageX;//e.pageX - e.target.offsetLeft,
-            y = touches[i].pageY;//e.pageY - e.target.offsetTop;    
-            log("touchstart:" + x+'<'+(bl*2+bl*3)+"...");  //log("touchstart:" + x+'and'+y + "...");
+            y = touches[i].pageY;//e.pageY - e.target.offsetTop; 
+            log("touchstart:" + x+'<'+(bl*2+bl*3)+"...");  
+            log("touchstart:" + x+'>'+bl*2+"...");//log("touchstart:" + x+'and'+y + "...");
+             
+            log("touchstart:" + y+'>'+(bl*20+bl/2)+"...");
+            log("touchstart:" + y+'<'+(bl*20+bl/2+bl*2+bl/2)+"...");  
+              
             if((x>bl*2&&x<bl*2+bl*3)&&(y>bl*20+bl/2&&y<bl*20+bl/2+bl*2+bl/2)){
                  xv= yv != 1 ?  0 : xv;
                  yv= yv != 1 ? -1 : yv;
@@ -606,9 +611,8 @@ function keyPush(event){
                  yv= xv != -1 ?  0 : yv;
             }   
               
-              
             ongoingTouches.push(copyTouch(touches[i]));
-            var color = colorForTouch(touches[i]);
+            var color = 'black';//colorForTouch(touches[i]);
             ctx.beginPath();
             ctx.arc(touches[i].pageX, touches[i].pageY, 4, 0, 2 * Math.PI, false);  // a circle at the start
             ctx.fillStyle = color;
