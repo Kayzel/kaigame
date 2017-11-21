@@ -436,11 +436,11 @@ function control(){
         }
     
     
-        function handleStart(evt) {
-          var touch = evt.targetTouches[0];  
-          evt.preventDefault();
+        function handleStart(event) {
+          var touch = event.touches[0];//event.targetTouches[0];  
+          event.preventDefault();
           log("touchstart.");
-          var touches = evt.changedTouches;
+          var touches = event.changedTouches;
           var x = touch.pageX, 
               y = touch.pageY;
           log("тачгор "+x+' тачверт '+y);  
@@ -479,10 +479,10 @@ function control(){
                  yv= xv != -1 ?  0 : yv;
             }   
               
-            ongoingTouches.push(copyTouch(touches[i]));
+           // ongoingTouches.push(copyTouch(touches[i]));
             var color = 'black';//colorForTouch(touches[i]);
             ctx.beginPath();
-            ctx.arc(touches[i].pageX, touches[i].pageY, 4, 0, 2 * Math.PI, false);  // a circle at the start
+            ctx.arc(x, y, 10, 0, 2 * Math.PI, false);  // a circle at the start
             ctx.fillStyle = color;
             ctx.fill();
           // log("touchstart:" + x+'>'+bl*2+"...");//log("touchstart:" + i + ".");
