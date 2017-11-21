@@ -65,7 +65,8 @@
                
   
            }
-            alert('ширина '+canvas.width+' / высота '+canvas.height);
+            alert('ширина '+window.screen.width+' / высота '+window.screen.height);
+        alert('ширина канваса '+canvas.width+' / высота канваса '+canvas.height);
             
 //        document.getElementsByTagName('body')[0].onmousedown = function(event){
 //            alert('X = '+event.clientX+' Y = '+event.clientY+' Ширина канваса = '+canvas.width+' Ширина экрана'+screen.width);
