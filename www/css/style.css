@@ -1,5 +1,9 @@
 body{
-    
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    position: absolute;
     margin: 0px;
 }
 .burger_menu_chek{
@@ -140,9 +144,11 @@ output{
     float: left;
 }
 #conv{
+/*
     position: relative;
     overflow: hidden;
     display: inline-block;
+*/
     
 }
 

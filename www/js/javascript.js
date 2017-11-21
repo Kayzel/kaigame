@@ -36,7 +36,7 @@
     ctx = canvas.getContext('2d'); 
     canvas.style.zIndex = 7;    
         if(window.screen.width<window.screen.height){
-            var razmX = window.screen.width;
+            var razmX = screen.width;
            
           // document.getElementById("conv").style.width = '100%'; 
         //   document.getElementById("conv").style.height = razmX+'px%'; 
@@ -51,13 +51,13 @@
 
             //console.log(screen.width+'Ширина экрана'+screen.height+'Высота экрана');
            }else if(window.screen.width>window.screen.height){
-                var razmX = window.screen.height;  
+                var razmX = document.body.clientHeight;  
                
           //  document.getElementById("conv").style.width = '100%';
          //  document.getElementById("conv").style.height = razmX+'px';               
                
-           canvas.width = razmX;
-           canvas.height = razmX+120;
+           canvas.width = razmX-120;
+           canvas.height = razmX;
               
                
                
@@ -100,11 +100,11 @@
 //объявления переменных    
  //переменная отвечающая за поле уровней сложности.
 var dl 
-    if(window.screen.width<window.screen.height){
-        var razmX = window.screen.width;
+    if(screen.width<window.screen.height){
+        var razmX = screen.width;
           dl = razmX;
-           }else if(window.screen.width>window.screen.height){
-             var razmX = window.screen.height;   
+           }else if(screen.width>screen.height){
+             var razmX = screen.height-200;   
            dl = razmX;
            }
    
