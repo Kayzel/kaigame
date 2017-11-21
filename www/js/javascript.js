@@ -116,7 +116,7 @@ var dl
            }
    
 var bl = dl /20;
-log('Версия игры 0.1 / размер ячейки '+bl+'начало панельки управления'+bl*20);
+log('Версия игры 0.1 / размер ячейки '+bl);
    
 var muvet;
 var up, down, left, right; // кнопки
@@ -446,11 +446,11 @@ function control(){
           var touch = event.touches[0];//event.targetTouches[0]; 
             console.log(touch);
           event.preventDefault();
-          log("touchstart.");
+        //  log("touchstart.");
           var touches = event.changedTouches;
           var x = touch.pageX, 
               y = touch.pageY;
-          log("тачгор "+x+' тачверт '+y);  
+         // log("тачгор "+x+' тачверт '+y);  
           for (var i = 0; i < touches.length; i++) {
             
             
