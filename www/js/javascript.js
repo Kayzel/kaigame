@@ -397,7 +397,20 @@ function control(){
             ctx.drawImage(picRight, bl*15,bl*20+bl/2,bl*3,bl*2+bl/2);
         }
     
-    
+            ctx.fillStyle="#4a3737";
+        ctx.fillRect(0,bl*20,dl,bl*5);
+
+            ctx.fillStyle="white";
+        ctx.fillRect(bl*2,bl*20+bl/2,bl*3,bl*2+bl/2);
+
+            ctx.fillStyle="white";
+        ctx.fillRect(bl*6,bl*20+bl/2,bl*3,bl*2+bl/2);
+
+            ctx.fillStyle="white";
+        ctx.fillRect(bl*11,bl*20+bl/2,bl*3,bl*2+bl/2);
+
+            ctx.fillStyle="white";
+        ctx.fillRect(bl*15,bl*20+bl/2,bl*3,bl*2+bl/2);
     
     
         
@@ -423,23 +436,10 @@ function control(){
           var x, y;
           for (var i = 0; i < touches.length; i++) {
             
-            ctx.fillStyle="#4a3737";
-    ctx.fillRect(0,bl*20,dl,bl*5);
-    
-        ctx.fillStyle="white";
-    ctx.fillRect(bl*2,bl*20+bl/2,bl*3,bl*2+bl/2);
-    
-        ctx.fillStyle="white";
-    ctx.fillRect(bl*6,bl*20+bl/2,bl*3,bl*2+bl/2);
-    
-        ctx.fillStyle="white";
-    ctx.fillRect(bl*11,bl*20+bl/2,bl*3,bl*2+bl/2);
-    
-        ctx.fillStyle="white";
-    ctx.fillRect(bl*15,bl*20+bl/2,bl*3,bl*2+bl/2);
+            
               
-            x = touches[i].pageX;//e.pageX - e.target.offsetLeft,
-            y = touches[i].pageY;//e.pageY - e.target.offsetTop; 
+            x = touches[i].pageX - evt.target.offsetLeft;//e.pageX - e.target.offsetLeft,
+            y = touches[i].pageY - evt.target.offsetTop;//e.pageY - e.target.offsetTop; 
             log("touchstart: x " + x+'<'+(bl*2+bl*3)+"...");  
             log("touchstart: x " + x+'>'+bl*2+"...");//log("touchstart:" + x+'and'+y + "...");
              
