@@ -34,8 +34,8 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         
-        app.receivedEvent('deviceready'); // deviceready
-        
+       
+        alert('первая ступень!');
             admob.setOptions({
                 publisherId:          "ca-app-pub-2752832807213349/8254785464",  // Required
                 interstitialAdId:     "ca-app-pub-2752832807213349/2591395245",  // Optional
@@ -43,21 +43,11 @@ var app = {
                 tappxIdAndroid:       "/XXXXXXXXX/Pub-XXXX-Android-AAAA",        // Optional
                 tappxShare:           0.5       */                                 // Optional
             });
-        
+        alert('вторая ступень, найдены параметры рекламы');
                 admob.createBannerView();
         
                 admob.requestInterstitialAd();
-        
+       alert('третья ступень, показ банера включен!'); 
     },
     // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
-
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-        
-        console.log('Received Event: ' + id);
-    }
 };

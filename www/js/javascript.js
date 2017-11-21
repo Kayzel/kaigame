@@ -371,7 +371,7 @@ function start() {
     control();
     document.addEventListener("keydown", keyPush);
     kuk = setInterval(game,100); 
-        
+    startup();    
     }
 
     
@@ -426,9 +426,27 @@ function control(){
       log("initialized.");
       }
     */
-    canvas.addEventListener('touchstart', function (e) { // mousedown
-    var x = e.pageX - e.target.offsetLeft,
-        y = e.pageY - e.target.offsetTop;
+    /*
+    function handleStart(evt) {
+          evt.preventDefault();
+          log("touchstart.");
+          var touches = evt.changedTouches;
+          var x, y;
+          for (var i = 0; i < touches.length; i++) {
+            x = touches[i].pageX;//e.pageX - e.target.offsetLeft,
+            y = touches[i].pageY;//e.pageY - e.target.offsetTop;    
+            log("touchstart:" + x+'and'+y + "...");
+            ongoingTouches.push(copyTouch(touches[i]));
+            var color = colorForTouch(touches[i]);
+            ctx.beginPath();
+            ctx.arc(touches[i].pageX, touches[i].pageY, 4, 0, 2 * Math.PI, false);  // a circle at the start
+            ctx.fillStyle = color;
+            ctx.fill();
+            log("touchstart:" + x+'and'+y + "...");//log("touchstart:" + i + ".");
+
+          }
+         // mousedown
+     
         console.log(x+' x -КанвасМенюГейм- y '+y)
         if((x>bl*2&&x<bl*2+bl*3)&&(y>bl*20+bl/2&&y<bl*20+bl/2+bl*2+bl/2)){
              xv= yv != 1 ?  0 : xv;
@@ -450,9 +468,9 @@ function control(){
              yv= xv != -1 ?  0 : yv;
         }
 
-    })
+    }
     
-    
+    */
 }
     
 function butmuve(click){
@@ -489,9 +507,9 @@ function rottenAppleDrow(){
       
 }
 function randomRA(){
-        while(rApple.length<buttondown){        rApple.push({x:Math.floor(Math.random()*tc),y:Math.floor(Math.random()*tc)});
-    }
-    
+        while(rApple.length<buttondown){
+            rApple.push({x:Math.floor(Math.random()*tc),y:Math.floor(Math.random()*tc)});
+            }
 }
 
 function appleDrow(){
@@ -527,4 +545,154 @@ function keyPush(event){
         }
     }
 }
+    
+    
+    //отлов тачей
+   function startup() {
+            
+          var el = document.getElementsByTagName("canvas")[0];
+          el.addEventListener("touchstart", handleStart, false);
+          el.addEventListener("touchend", handleEnd, false);
+          el.addEventListener("touchcancel", handleCancel, false);
+          el.addEventListener("touchmove", handleMove, false);
+          log("initialized.");
+           
+        }
+       /* 
+        function handleStart(evt) {
+          evt.preventDefault();
+          log("touchstart.");
+          var el = document.getElementsByTagName("canvas")[0];
+          var ctx = el.getContext("2d");
+          var touches = evt.changedTouches;
+
+          for (var i = 0; i < touches.length; i++) {
+            log("touchstart:" + i + "...");
+            ongoingTouches.push(copyTouch(touches[i]));
+            var color = colorForTouch(touches[i]);
+            ctx.beginPath();
+            ctx.arc(touches[i].pageX, touches[i].pageY, 4, 0, 2 * Math.PI, false);  // a circle at the start
+            ctx.fillStyle = color;
+            ctx.fill();
+            log("touchstart:" + i + ".");
+          }
+        }
+        */
+        
+        function handleStart(evt) {
+          evt.preventDefault();
+          log("touchstart.");
+          var touches = evt.changedTouches;
+          var x, y;
+          for (var i = 0; i < touches.length; i++) {
+            x = touches[i].pageX;//e.pageX - e.target.offsetLeft,
+            y = touches[i].pageY;//e.pageY - e.target.offsetTop;    
+            log("touchstart:" + x+'<'+(bl*2+bl*3)+"...");  //log("touchstart:" + x+'and'+y + "...");
+            if((x>bl*2&&x<bl*2+bl*3)&&(y>bl*20+bl/2&&y<bl*20+bl/2+bl*2+bl/2)){
+                 xv= yv != 1 ?  0 : xv;
+                 yv= yv != 1 ? -1 : yv;
+                log("условие выполнено");
+            }
+            if((x>bl*6&&x<bl*6+bl*3)&&(y>bl*20+bl/2&&y<bl*20+bl/2+bl*2+bl/2)){
+                 xv= yv != -1 ? 0 : xv;
+                 yv= yv != -1 ? 1 : yv;
+            }
+            if((x>bl*11&&x<bl*11+bl*3)&&(y>bl*20+bl/2&&y<bl*20+bl/2+bl*2+bl/2)){
+                 xv= xv != 1 ? -1 : xv;
+                 yv= xv != 1 ?  0 : yv;
+            }
+            if((x>bl*15&&x<bl*15+bl*3)&&(y>bl*20+bl/2&&y<bl*20+bl/2+bl*2+bl/2)){
+                 xv= xv != -1 ?  1 : xv;
+                 yv= xv != -1 ?  0 : yv;
+            }   
+              
+              
+            ongoingTouches.push(copyTouch(touches[i]));
+            var color = colorForTouch(touches[i]);
+            ctx.beginPath();
+            ctx.arc(touches[i].pageX, touches[i].pageY, 4, 0, 2 * Math.PI, false);  // a circle at the start
+            ctx.fillStyle = color;
+            ctx.fill();
+          // log("touchstart:" + x+'>'+bl*2+"...");//log("touchstart:" + i + ".");
+            log("touchstart:" + x+'<'+(bl*2+bl*3)+"...");
+            console.log(x+' x -КанвасМенюГейм- y '+y)
+ 
+          }
+         // mousedown
+            
+
+        }
+    
+    
+        function handleMove(evt) {
+          evt.preventDefault();
+          var el = document.getElementsByTagName("canvas")[0];
+          var ctx = el.getContext("2d");
+          var touches = evt.changedTouches;
+
+          for (var i = 0; i < touches.length; i++) {
+            var color = colorForTouch(touches[i]);
+            var idx = ongoingTouchIndexById(touches[i].identifier);
+
+            if (idx >= 0) {
+              log("continuing touch "+idx);
+              ctx.beginPath();
+              log("ctx.moveTo(" + ongoingTouches[idx].pageX + ", " + ongoingTouches[idx].pageY + ");");
+              ctx.moveTo(ongoingTouches[idx].pageX, ongoingTouches[idx].pageY);
+              log("ctx.lineTo(" + touches[i].pageX + ", " + touches[i].pageY + ");");
+              ctx.lineTo(touches[i].pageX, touches[i].pageY);
+              ctx.lineWidth = 4;
+              ctx.strokeStyle = color;
+              ctx.stroke();
+
+              ongoingTouches.splice(idx, 1, copyTouch(touches[i]));  // swap in the new touch record
+              log(".");
+            } else {
+              log("can't figure out which touch to continue");
+            }
+          }
+        }
+        
+        
+        function handleEnd(evt) {
+          evt.preventDefault();
+          log("touchend");
+          var el = document.getElementsByTagName("canvas")[0];
+          var ctx = el.getContext("2d");
+          var touches = evt.changedTouches;
+
+          for (var i = 0; i < touches.length; i++) {
+            var color = colorForTouch(touches[i]);
+            var idx = ongoingTouchIndexById(touches[i].identifier);
+
+            if (idx >= 0) {
+              ctx.lineWidth = 4;
+              ctx.fillStyle = color;
+              ctx.beginPath();
+              ctx.moveTo(ongoingTouches[idx].pageX, ongoingTouches[idx].pageY);
+              ctx.lineTo(touches[i].pageX, touches[i].pageY);
+              ctx.fillRect(touches[i].pageX - 4, touches[i].pageY - 4, 8, 8);  // and a square at the end
+              ongoingTouches.splice(idx, 1);  // remove it; we're done
+            } else {
+              log("can't figure out which touch to end");
+            }
+          }
+        }
+        
+        function handleCancel(evt) {
+          evt.preventDefault();
+          log("touchcancel.");
+          var touches = evt.changedTouches;
+
+          for (var i = 0; i < touches.length; i++) {
+            ongoingTouches.splice(i, 1);  // remove it; we're done
+          }
+        }
+        
+        function log(msg) {
+          var p = document.getElementById('log');
+          p.innerHTML = msg + "\n" + p.innerHTML;
+        } 
+    
+    
 })()
