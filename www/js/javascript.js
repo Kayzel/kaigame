@@ -426,27 +426,30 @@ function control(){
     
        function startup() {
             
-          var el = document.getElementsByTagName("canvas")[0];
-          el.addEventListener("touchstart", handleStart, false);
-          el.addEventListener("touchend", handleEnd, false);
-          el.addEventListener("touchcancel", handleCancel, false);
-          el.addEventListener("touchmove", handleMove, false);
+          //var el = document.getElementsByTagName("canvas")[0];
+          canvas.addEventListener("touchstart", handleStart, false);
+       //   canvas.addEventListener("touchend", handleEnd, false);
+       //   canvas.addEventListener("touchcancel", handleCancel, false);
+        //  canvas.addEventListener("touchmove", handleMove, false);
           log("initialized.");
            
         }
     
     
         function handleStart(evt) {
+          var touch = evt.targetTouches[0];  
           evt.preventDefault();
           log("touchstart.");
           var touches = evt.changedTouches;
-          var x, y;
+          var x = touch.pageX, 
+              y = touch.pageY;
+          log("тачгор "+x+' тачверт '+y);  
           for (var i = 0; i < touches.length; i++) {
             
             
               
-            x = touches[i].pageX - evt.target.offsetLeft;//e.pageX - e.target.offsetLeft,
-            y = touches[i].pageY - evt.target.offsetTop;//e.pageY - e.target.offsetTop;
+            //x = touches[i].pageX;//e.pageX - e.target.offsetLeft,
+            //y = touches[i].pageY;//e.pageY - e.target.offsetTop;
             
             log("touchstart: размер канваса "+dl+"...");  
              
