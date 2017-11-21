@@ -36,7 +36,7 @@
     ctx = canvas.getContext('2d'); 
     canvas.style.zIndex = 7;    
         if(screen.width<screen.height){
-            var razmX = window.screen.availWidth;
+            var razmX = screen.width;
            
            document.getElementById("conv").style.width = '100%'; 
            document.getElementById("conv").style.height = '100%'; 
@@ -51,7 +51,7 @@
 
             //console.log(screen.width+'Ширина экрана'+screen.height+'Высота экрана');
            }else if(screen.width>screen.height){
-                var razmX = window.screen.availHeight-200;  
+                var razmX = screen.height-200;  
                
             document.getElementById("conv").style.width = razmX+'px';
            document.getElementById("conv").style.height = '100%';               
@@ -100,10 +100,10 @@
  //переменная отвечающая за поле уровней сложности.
 var dl 
     if(screen.width<screen.height){
-        var razmX = window.screen.availWidth;
+        var razmX = screen.width;
           dl = razmX;
            }else if(screen.width>screen.height){
-             var razmX = window.screen.availHeight-200;   
+             var razmX = screen.height-200;   
            dl = razmX;
            }
    
@@ -587,11 +587,11 @@ function keyPush(event){
           for (var i = 0; i < touches.length; i++) {
             x = touches[i].pageX;//e.pageX - e.target.offsetLeft,
             y = touches[i].pageY;//e.pageY - e.target.offsetTop; 
-            log("touchstart:" + x+'<'+(bl*2+bl*3)+"...");  
-            log("touchstart:" + x+'>'+bl*2+"...");//log("touchstart:" + x+'and'+y + "...");
+            log("touchstart: x " + x+'<'+(bl*2+bl*3)+"...");  
+            log("touchstart: x " + x+'>'+bl*2+"...");//log("touchstart:" + x+'and'+y + "...");
              
-            log("touchstart:" + y+'>'+(bl*20+bl/2)+"...");
-            log("touchstart:" + y+'<'+(bl*20+bl/2+bl*2+bl/2)+"...");  
+            log("touchstart: y " + y+'>'+(bl*20+bl/2)+"...");
+            log("touchstart: y " + y+'<'+(bl*20+bl/2+bl*2+bl/2)+"...");  
               
             if((x>bl*2&&x<bl*2+bl*3)&&(y>bl*20+bl/2&&y<bl*20+bl/2+bl*2+bl/2)){
                  xv= yv != 1 ?  0 : xv;
