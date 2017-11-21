@@ -447,31 +447,20 @@ function control(){
             console.log(touch);
           event.preventDefault();
           log("touchstart.");
-          //var touches = event.changedTouches;
+          var touches = event.changedTouches;
           var x = touch.pageX, 
               y = touch.pageY;
           log("тачгор "+x+' тачверт '+y);  
-          for (var i = 0; i < touch.length; i++) {
+          for (var i = 0; i < touches.length; i++) {
             
             
               
             //x = touches[i].pageX;//e.pageX - e.target.offsetLeft,
             //y = touches[i].pageY;//e.pageY - e.target.offsetTop;
-            
-            log("touchstart: размер канваса "+dl+"...");  
-             
-            log("touchstart: размер ячейки "+bl+"...");   
-            log("touchstart: x " + x+'<'+(bl*2+bl*3)+"..."); 
-             
-            log("touchstart: x " + x+'>'+bl*2+"...");//log("touchstart:" + x+'and'+y + "...");
-             
-            log("touchstart: y " + y+'>'+(bl*20+bl/2)+"...");
-            log("touchstart: y " + y+'<'+(bl*20+bl/2+bl*2+bl/2)+"...");  
               
             if((x>bl*2&&x<bl*2+bl*3)&&(y>(bl*20)+(bl/2)&&y<(bl*20)+(bl/2)+(bl*2)+(bl/2))){
                  xv= yv != 1 ?  0 : xv;
                  yv= yv != 1 ? -1 : yv;
-                log("условие выполнено");
             }
             if((x>bl*6&&x<bl*6+bl*3)&&(y>bl*20+bl/2&&y<bl*20+bl/2+bl*2+bl/2)){
                  xv= yv != -1 ? 0 : xv;
@@ -487,15 +476,13 @@ function control(){
             }   
               
            // ongoingTouches.push(copyTouch(touches[i]));
-          //  var color = 'black';//colorForTouch(touches[i]);
-        //    ctx.beginPath();
-          //    ctx.fillStyle = 'black';
+           // var color = 'black';//colorForTouch(touches[i]);
+            //ctx.beginPath();
             //ctx.arc(x, y, 10, 0, 2 * Math.PI, false);  // a circle at the start
-           // ctx.fillStyle = color;
+            //ctx.fillStyle = color;
             //ctx.fill();
           // log("touchstart:" + x+'>'+bl*2+"...");//log("touchstart:" + i + ".");
-            log("touchstart:" + x+'<'+(bl*2+bl*3)+"...");
-            console.log(x+' x -КанвасМенюГейм- y '+y)
+            
  
           }
          // mousedown
