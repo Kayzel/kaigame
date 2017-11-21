@@ -43,7 +43,7 @@
             
             
            canvas.width = razmX;
-           canvas.height = razmX+120;
+           canvas.height = razmX+110;
            
             
            //document.getElementsByTagName('body')[0].style.width = razmX+'px';
@@ -57,7 +57,7 @@
          //  document.getElementById("conv").style.height = razmX+'px';               
                
            canvas.width = razmX;
-           canvas.height = razmX+100;
+           canvas.height = razmX+120;
               
                
                
@@ -440,8 +440,8 @@ function control(){
           event.preventDefault();
           log("touchstart.");
           var touches = event.changedTouches;
-          var x = (touch.pageX+dl/2) - event.target.offsetLeft, 
-              y = (touch.pageY+dl/2) - event.target.offsetTop;
+          var x = touch.pageX, 
+              y = touch.pageY;
           log("тачгор "+x+' тачверт '+y);  
           for (var i = 0; i < touches.length; i++) {
             
