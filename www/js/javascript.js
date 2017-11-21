@@ -51,7 +51,7 @@
 
             //console.log(screen.width+'Ширина экрана'+screen.height+'Высота экрана');
            }else if(screen.width>screen.height){
-                var razmX = screen.height-200;  
+                var razmX = screen.height;  
                
             document.getElementById("conv").style.width = razmX+'px';
            document.getElementById("conv").style.height = '100%';               
@@ -103,12 +103,12 @@ var dl
         var razmX = screen.width;
           dl = razmX;
            }else if(screen.width>screen.height){
-             var razmX = screen.height-200;   
+             var razmX = screen.height;   
            dl = razmX;
            }
    
 var bl = dl /20;
-log('размер ячейки'+bl);
+log('Версия игры 0.1 / размер ячейки '+bl);
 var muvet;
 var up, down, left, right; // кнопки
 var kuk;  //таймер
@@ -371,7 +371,7 @@ function start() {
     control();
     document.addEventListener("keydown", keyPush);
     kuk = setInterval(game,100); 
-    startup();    
+        
     }
 
     
@@ -400,7 +400,30 @@ function control(){
     
     
     
-        ctx.fillStyle="#4a3737";
+        
+    
+    startup();
+    
+       function startup() {
+            
+          var el = document.getElementsByTagName("canvas")[0];
+          el.addEventListener("touchstart", handleStart, false);
+          el.addEventListener("touchend", handleEnd, false);
+          el.addEventListener("touchcancel", handleCancel, false);
+          el.addEventListener("touchmove", handleMove, false);
+          log("initialized.");
+           
+        }
+    
+    
+        function handleStart(evt) {
+          evt.preventDefault();
+          log("touchstart.");
+          var touches = evt.changedTouches;
+          var x, y;
+          for (var i = 0; i < touches.length; i++) {
+            
+            ctx.fillStyle="#4a3737";
     ctx.fillRect(0,bl*20,dl,bl*5);
     
         ctx.fillStyle="white";
@@ -409,12 +432,53 @@ function control(){
         ctx.fillStyle="white";
     ctx.fillRect(bl*6,bl*20+bl/2,bl*3,bl*2+bl/2);
     
-            ctx.fillStyle="white";
+        ctx.fillStyle="white";
     ctx.fillRect(bl*11,bl*20+bl/2,bl*3,bl*2+bl/2);
     
-            ctx.fillStyle="white";
+        ctx.fillStyle="white";
     ctx.fillRect(bl*15,bl*20+bl/2,bl*3,bl*2+bl/2);
-    
+              
+            x = touches[i].pageX;//e.pageX - e.target.offsetLeft,
+            y = touches[i].pageY;//e.pageY - e.target.offsetTop; 
+            log("touchstart: x " + x+'<'+(bl*2+bl*3)+"...");  
+            log("touchstart: x " + x+'>'+bl*2+"...");//log("touchstart:" + x+'and'+y + "...");
+             
+            log("touchstart: y " + y+'>'+(bl*20+bl/2)+"...");
+            log("touchstart: y " + y+'<'+(bl*20+bl/2+bl*2+bl/2)+"...");  
+              
+            if((x>bl*2&&x<bl*2+bl*3)&&(y>bl*20+bl/2&&y<bl*20+bl/2+bl*2+bl/2)){
+                 xv= yv != 1 ?  0 : xv;
+                 yv= yv != 1 ? -1 : yv;
+                log("условие выполнено");
+            }
+            if((x>bl*6&&x<bl*6+bl*3)&&(y>bl*20+bl/2&&y<bl*20+bl/2+bl*2+bl/2)){
+                 xv= yv != -1 ? 0 : xv;
+                 yv= yv != -1 ? 1 : yv;
+            }
+            if((x>bl*11&&x<bl*11+bl*3)&&(y>bl*20+bl/2&&y<bl*20+bl/2+bl*2+bl/2)){
+                 xv= xv != 1 ? -1 : xv;
+                 yv= xv != 1 ?  0 : yv;
+            }
+            if((x>bl*15&&x<bl*15+bl*3)&&(y>bl*20+bl/2&&y<bl*20+bl/2+bl*2+bl/2)){
+                 xv= xv != -1 ?  1 : xv;
+                 yv= xv != -1 ?  0 : yv;
+            }   
+              
+            ongoingTouches.push(copyTouch(touches[i]));
+            var color = 'black';//colorForTouch(touches[i]);
+            ctx.beginPath();
+            ctx.arc(touches[i].pageX, touches[i].pageY, 4, 0, 2 * Math.PI, false);  // a circle at the start
+            ctx.fillStyle = color;
+            ctx.fill();
+          // log("touchstart:" + x+'>'+bl*2+"...");//log("touchstart:" + i + ".");
+            log("touchstart:" + x+'<'+(bl*2+bl*3)+"...");
+            console.log(x+' x -КанвасМенюГейм- y '+y)
+ 
+          }
+         // mousedown
+            
+
+        }
     
     /*
     function startup() {
@@ -548,16 +612,7 @@ function keyPush(event){
     
     
     //отлов тачей
-   function startup() {
-            
-          var el = document.getElementsByTagName("canvas")[0];
-          el.addEventListener("touchstart", handleStart, false);
-          el.addEventListener("touchend", handleEnd, false);
-          el.addEventListener("touchcancel", handleCancel, false);
-          el.addEventListener("touchmove", handleMove, false);
-          log("initialized.");
-           
-        }
+
        /* 
         function handleStart(evt) {
           evt.preventDefault();
@@ -579,53 +634,7 @@ function keyPush(event){
         }
         */
         
-        function handleStart(evt) {
-          evt.preventDefault();
-          log("touchstart.");
-          var touches = evt.changedTouches;
-          var x, y;
-          for (var i = 0; i < touches.length; i++) {
-            x = touches[i].pageX;//e.pageX - e.target.offsetLeft,
-            y = touches[i].pageY;//e.pageY - e.target.offsetTop; 
-            log("touchstart: x " + x+'<'+(bl*2+bl*3)+"...");  
-            log("touchstart: x " + x+'>'+bl*2+"...");//log("touchstart:" + x+'and'+y + "...");
-             
-            log("touchstart: y " + y+'>'+(bl*20+bl/2)+"...");
-            log("touchstart: y " + y+'<'+(bl*20+bl/2+bl*2+bl/2)+"...");  
-              
-            if((x>bl*2&&x<bl*2+bl*3)&&(y>bl*20+bl/2&&y<bl*20+bl/2+bl*2+bl/2)){
-                 xv= yv != 1 ?  0 : xv;
-                 yv= yv != 1 ? -1 : yv;
-                log("условие выполнено");
-            }
-            if((x>bl*6&&x<bl*6+bl*3)&&(y>bl*20+bl/2&&y<bl*20+bl/2+bl*2+bl/2)){
-                 xv= yv != -1 ? 0 : xv;
-                 yv= yv != -1 ? 1 : yv;
-            }
-            if((x>bl*11&&x<bl*11+bl*3)&&(y>bl*20+bl/2&&y<bl*20+bl/2+bl*2+bl/2)){
-                 xv= xv != 1 ? -1 : xv;
-                 yv= xv != 1 ?  0 : yv;
-            }
-            if((x>bl*15&&x<bl*15+bl*3)&&(y>bl*20+bl/2&&y<bl*20+bl/2+bl*2+bl/2)){
-                 xv= xv != -1 ?  1 : xv;
-                 yv= xv != -1 ?  0 : yv;
-            }   
-              
-            ongoingTouches.push(copyTouch(touches[i]));
-            var color = 'black';//colorForTouch(touches[i]);
-            ctx.beginPath();
-            ctx.arc(touches[i].pageX, touches[i].pageY, 4, 0, 2 * Math.PI, false);  // a circle at the start
-            ctx.fillStyle = color;
-            ctx.fill();
-          // log("touchstart:" + x+'>'+bl*2+"...");//log("touchstart:" + i + ".");
-            log("touchstart:" + x+'<'+(bl*2+bl*3)+"...");
-            console.log(x+' x -КанвасМенюГейм- y '+y)
- 
-          }
-         // mousedown
-            
 
-        }
     
     
         function handleMove(evt) {
