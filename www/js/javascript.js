@@ -440,8 +440,8 @@ function control(){
           event.preventDefault();
           log("touchstart.");
           var touches = event.changedTouches;
-          var x = touch.pageX+dl/2 - event.target.offsetLeft, 
-              y = touch.pageY+dl/2 - event.target.offsetTop;
+          var x = (touch.pageX+dl/2) - event.target.offsetLeft, 
+              y = (touch.pageY+dl/2) - event.target.offsetTop;
           log("тачгор "+x+' тачверт '+y);  
           for (var i = 0; i < touches.length; i++) {
             
