@@ -143,8 +143,9 @@ output{
     top: 5px;
     left: 5px;
     right: 5px;
-    bottom: 5px;
+/*    bottom: 5px;*/
     position: absolute;
+    display: blockb;
 /*
     position: relative;
     overflow: hidden;

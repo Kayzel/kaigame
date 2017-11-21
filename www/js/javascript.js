@@ -68,6 +68,8 @@
                
   
            }
+        var p = document.getElementById('log');  
+          p.style.marginTop = canvas.height+'px';   
             alert('ширина '+window.screen.width+' / высота '+window.screen.height);
         alert('ширина канваса '+canvas.width+' / высота канваса '+canvas.height);
             
@@ -722,6 +724,7 @@ function keyPush(event){
         function log(msg) {
           var p = document.getElementById('log');
           p.innerHTML = msg + "\n" + p.innerHTML;
+           
         } 
     
     
