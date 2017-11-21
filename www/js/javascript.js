@@ -443,14 +443,15 @@ function control(){
     
     
         function handleStart(event) {
-          var touch = event.touches[0];//event.targetTouches[0];  
+          var touch = event.touches[0];//event.targetTouches[0]; 
+            console.log(touch);
           event.preventDefault();
           log("touchstart.");
-          var touches = event.changedTouches;
+          //var touches = event.changedTouches;
           var x = touch.pageX, 
               y = touch.pageY;
           log("тачгор "+x+' тачверт '+y);  
-          for (var i = 0; i < touches.length; i++) {
+          for (var i = 0; i < touch.length; i++) {
             
             
               
@@ -486,10 +487,11 @@ function control(){
             }   
               
            // ongoingTouches.push(copyTouch(touches[i]));
-            var color = 'black';//colorForTouch(touches[i]);
-            //ctx.beginPath();
+          //  var color = 'black';//colorForTouch(touches[i]);
+        //    ctx.beginPath();
+          //    ctx.fillStyle = 'black';
             //ctx.arc(x, y, 10, 0, 2 * Math.PI, false);  // a circle at the start
-            //ctx.fillStyle = color;
+           // ctx.fillStyle = color;
             //ctx.fill();
           // log("touchstart:" + x+'>'+bl*2+"...");//log("touchstart:" + i + ".");
             log("touchstart:" + x+'<'+(bl*2+bl*3)+"...");
@@ -657,7 +659,7 @@ function keyPush(event){
         
 
     
-    
+        /*
         function handleMove(evt) {
           evt.preventDefault();
           var el = document.getElementsByTagName("canvas")[0];
@@ -722,7 +724,7 @@ function keyPush(event){
             ongoingTouches.splice(i, 1);  // remove it; we're done
           }
         }
-        
+        */
         function log(msg) {
           var p = document.getElementById('log');
           p.innerHTML = msg + "\n" + p.innerHTML;
