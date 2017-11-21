@@ -38,8 +38,8 @@
         if(window.screen.width<window.screen.height){
             var razmX = window.screen.width;
            
-           document.getElementById("conv").style.width = razmX+'px'; 
-           document.getElementById("conv").style.height = '100%'; 
+           document.getElementById("conv").style.width = '100%'; 
+           document.getElementById("conv").style.height = razmX+'px%'; 
             
             
            canvas.width = razmX;
@@ -53,11 +53,11 @@
            }else if(window.screen.width>window.screen.height){
                 var razmX = window.screen.height;  
                
-            document.getElementById("conv").style.width = razmX+'px';
-           document.getElementById("conv").style.height = '100%';               
+            document.getElementById("conv").style.width = '100%';
+           document.getElementById("conv").style.height = razmX+'px';               
                
            canvas.width = razmX;
-           canvas.height = razmX+120;
+           canvas.height = razmX+100;
               
                
                
@@ -367,24 +367,23 @@ function choice(){
     
 function start() {        
       clearInterval(kuk);
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    ctx.fillStyle="#C0C0C0";
-    ctx.fillRect(0,0,canvas.width,canvas.height);
-    control();
-    document.addEventListener("keydown", keyPush);
-    kuk = setInterval(game,100); 
-        
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        ctx.fillStyle="#C0C0C0";
+        ctx.fillRect(0,0,canvas.width,canvas.height);
+        control();
+        document.addEventListener("keydown", keyPush);
+        kuk = setInterval(game,100);   
     }
 
     
 function control(){
     
-    ctx.fillStyle="#4a3737";
+            ctx.fillStyle="#4a3737";
         ctx.fillRect(0,bl*20,dl,bl*5);
 
             ctx.fillStyle="white";
         ctx.fillRect(bl*2,bl*20+bl/2,bl*3,bl*2+bl/2);
-        log("Левая кнопка x- "+bl*2+' y- '+(bl*20+bl/2)+' ширина- '+bl*3+' высота- '+(bl*2+bl/2));
+            log("Левая кнопка x- "+bl*2+' y- '+(bl*20+bl/2)+' ширина- '+bl*3+' высота- '+(bl*2+bl/2));
             ctx.fillStyle="white";
         ctx.fillRect(bl*6,bl*20+bl/2,bl*3,bl*2+bl/2);
 
