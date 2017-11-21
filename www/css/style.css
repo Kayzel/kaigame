@@ -130,9 +130,11 @@ output{
 #choice{
     width: inherit; 
 }
+/*
 #{
     width: inherit; 
 }
+*/
 #start{
    
     float: left;

@@ -38,8 +38,8 @@
         if(window.screen.width<window.screen.height){
             var razmX = window.screen.width;
            
-           document.getElementById("conv").style.width = '100%'; 
-           document.getElementById("conv").style.height = razmX+'px%'; 
+          // document.getElementById("conv").style.width = '100%'; 
+        //   document.getElementById("conv").style.height = razmX+'px%'; 
             
             
            canvas.width = razmX;
@@ -53,8 +53,8 @@
            }else if(window.screen.width>window.screen.height){
                 var razmX = window.screen.height;  
                
-            document.getElementById("conv").style.width = '100%';
-           document.getElementById("conv").style.height = razmX+'px';               
+          //  document.getElementById("conv").style.width = '100%';
+         //  document.getElementById("conv").style.height = razmX+'px';               
                
            canvas.width = razmX;
            canvas.height = razmX+100;
@@ -440,8 +440,8 @@ function control(){
           event.preventDefault();
           log("touchstart.");
           var touches = event.changedTouches;
-          var x = touch.clientX, 
-              y = touch.clientY;
+          var x = touch.pageX - event.target.offsetLeft, 
+              y = touch.pageY - event.target.offsetTop;
           log("тачгор "+x+' тачверт '+y);  
           for (var i = 0; i < touches.length; i++) {
             
