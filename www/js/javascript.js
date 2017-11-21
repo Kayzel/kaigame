@@ -100,16 +100,18 @@
 
     
 }
-    
+var box = document.getElementById("conv");
+        var Wbox = box.clientHeight || box.offsetHeight;
+        var Hbox = box.clientWidth || box.offsetWidth;    
    
 //объявления переменных    
  //переменная отвечающая за поле уровней сложности.
 var dl 
     if(screen.width<window.screen.height){
-        var razmX = screen.width;
+        var razmX = Hbox;
           dl = razmX;
            }else if(screen.width>screen.height){
-             var razmX = screen.height-200;   
+             var razmX = Wbox-120;   
            dl = razmX;
            }
    
