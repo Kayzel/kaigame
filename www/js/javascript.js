@@ -38,12 +38,12 @@
         if(window.screen.width<window.screen.height){
             var razmX = window.screen.width;
            
-           document.getElementById("conv").style.width = '100%'; 
+           document.getElementById("conv").style.width = razmX+'px'; 
            document.getElementById("conv").style.height = '100%'; 
             
             
            canvas.width = razmX;
-           canvas.height = razmX+100;
+           canvas.height = razmX+120;
            
             
            //document.getElementsByTagName('body')[0].style.width = razmX+'px';
@@ -441,8 +441,8 @@ function control(){
           event.preventDefault();
           log("touchstart.");
           var touches = event.changedTouches;
-          var x = touch.pageX, 
-              y = touch.pageY;
+          var x = touch.clientX, 
+              y = touch.clientY;
           log("тачгор "+x+' тачверт '+y);  
           for (var i = 0; i < touches.length; i++) {
             
