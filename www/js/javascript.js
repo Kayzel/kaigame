@@ -303,6 +303,19 @@ function filed(){
          ctx.fillStyle="#C0C0C0";
          ctx.fillRect(0,0,canvas.width,canvas.height);
         
+        var num1 = JSON.parse(localStorage.getItem('1'));
+        var num2 = JSON.parse(localStorage.getItem('2'));
+        var num3 = JSON.parse(localStorage.getItem('3'));
+        var num4 = JSON.parse(localStorage.getItem('4'));
+        var num5 = JSON.parse(localStorage.getItem('5'));
+        
+        if(localStorage.getItem('1') != null) {document.getElementById('recEazy').innerHTML = num1.kik;}
+        if(localStorage.getItem('2') != null) {document.getElementById('recEazy2').innerHTML = num2.kik;}
+        if(localStorage.getItem('3') != null) {document.getElementById('recEazy3').innerHTML = num3.kik;}
+        if(localStorage.getItem('4') != null) {document.getElementById('recEazy4').innerHTML = num4.kik;}
+        if(localStorage.getItem('5') != null) {document.getElementById('recEazy5').innerHTML = num5.kik;}
+        
+        
         document.getElementById('windowMenu').style.display = 'block';
         document.getElementById('filedMenu').style.display = 'none';
     }
