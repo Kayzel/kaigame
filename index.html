@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    
+    
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+    <!-- Good default declaration:
+    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+        * Enable inline JS: add 'unsafe-inline' to default-src
+        * Enable eval(): add 'unsafe-eval' to default-src
+    * Create your own at http://cspisawesome.com
+    -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" />
+    <link rel="stylesheet" type="text/css" href="css/index.css"/> -->
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    
+    <title>Hello World</title>
+</head>
+
+<body style="margin: 0px;">
+<div id="conv" style="z-index: 0;">
+   <div id="banner"></div>
+    <div class="menu" id="windowMenu">
+       <lable id="logo"><img id="logoimg" src="css/img/menu1.png" alt=""><p id="logotext">HardSnake</p></lable>
+        <input class="burger_menu_chek2" type="checkbox" id="burger2" name="checkbox1">
+        <label class="menuItem menuItemStart" id="startGame" for="burger2">Play</label>
+           <div id="boxitem2">
+            <ui class="menuItem2" id="easy">Easy</ui>
+            <ui class="menuItem2" id="normal">Normal</ui>
+            <ui class="menuItem2" id="hard">Hard</ui>
+            <ui class="menuItem2" id="heroic">Heroic</ui>
+            <ui class="menuItem2" id="dragon">Dragon</ui>
+           </div> 
+        <input class="burger_menu_chek" type="checkbox" id="burger">
+        <label class="menuItem menuItemRec" id="recordGame" for="burger">Records</label>
+           <div id="boxitem3">
+           <div id="nameItemBox3">
+            <ui class="menuItem3">Easy</ui>
+            <ui class="menuItem3">Normal </ui>
+            <ui class="menuItem3">Hard </ui>
+            <ui class="menuItem3">Heroic </ui>
+            <ui class="menuItem3">Dragon </ui>
+            </div>
+            <div id="scoreitembox3">
+                <output class="score" id="recEazy">0</output>
+                <output class="score" id="recEazy2">0</output>
+                <output class="score" id="recEazy3">0</output>
+                <output class="score" id="recEazy4">0</output>
+                <output class="score" id="recEazy5">0</output>
+            </div>    
+           </div>     
+<!--         <ui class="menuItem">Настройки</ui>
+        <ui class="menuItem">Выход</ui> -->
+    </div>
+    <div class="menuFiled" id="filedMenu">
+           <div class="filedWindow">
+            <h2>Game Over! :(</h2>
+            <button id="buttonReload">Restart</button>
+            <button id="buttonMenu">Menu</button>
+           </div>
+    </div>
+    <div id="windowscore">
+        <ui>Score: <output id="tailScope">0</output></ui>
+        
+        <div class="buttonStopit">
+        <img id="playButtonGameplay" src="img/PlayButton.png" alt="" >
+        <img id="stopButtonGameplay" src="img/StoptButton.png" alt="">
+        </div>
+    </div>
+    <canvas id="snaki">Обновите браузер</canvas>
+    <canvas id="control">Обновите браузер</canvas>  
+</div>
+   <!-- Log: <pre id="log" style="border: 1px solid #ccc;"></pre> -->
+   <!-- <div class="app">
+        <h1>Hello PhoneGap</h1>
+        <div id="deviceready" class="blink">
+            <p class="event listening">Connecting to Device</p>
+            <p class="event received">Device is Ready</p>
+        </div>
+    </div> 
+    <input type="checkbox">, <input type="radio"> --> 
+    
+    <script type="text/javascript" src="cordova.js"></script> 
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/javascript.js"></script>
+    <script type="text/javascript" src="js/menu.js"></script>
+    <script type="text/javascript">
+        app.initialize();
+    </script>
+</body>
+
+</html>
