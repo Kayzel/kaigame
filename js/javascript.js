@@ -54,7 +54,7 @@
     canvas.style.zIndex = 7;    
         if(window.screen.width<window.screen.height){
             var razmX = Hbox;
-           alert(razmX);
+            //alert(razmX);
           // document.getElementById("conv").style.width = '100%'; 
         //   document.getElementById("conv").style.height = razmX+'px%'; 
             
@@ -85,8 +85,8 @@
            }
        /* var p = document.getElementById('log');  
           p.style.marginTop = canvas.height+'px';   */
-            alert('ширина '+window.screen.width+' / высота '+window.screen.height);
-        alert('ширина канваса '+canvas.width+' / высота канваса '+canvas.height);
+        //    alert('ширина '+window.screen.width+' / высота '+window.screen.height);
+       // alert('ширина канваса '+canvas.width+' / высота канваса '+canvas.height);
             
 //        document.getElementsByTagName('body')[0].onmousedown = function(event){
 //            alert('X = '+event.clientX+' Y = '+event.clientY+' Ширина канваса = '+canvas.width+' Ширина экрана'+screen.width);
