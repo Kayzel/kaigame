@@ -657,6 +657,21 @@ function keyPush(event){
 }
     
     
+    
+var ajax = document.getElementById('testes');
+    var request = new XMLHttpRequest();
+    
+    request.onreadystatechange = function() {
+           if(request.status === 200) { 
+               var serverItem = request.responseText; //parseInt(string, radix);
+               ajax.innerHTML = serverItem;  
+        }
+    }
+     var timeInterval = setInterval(time, 1000);
+    function time(){
+         request.open('POST', 'http://mastersite24.ru/testajax/server.php');
+         request.send();
+      } 
     //отлов тачей
 
        /* 
