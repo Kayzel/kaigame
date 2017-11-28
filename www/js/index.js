@@ -50,13 +50,13 @@ var app = {
                 admob.requestInterstitialAd();
         
         
-         app.receivedEvent('menuItem', onDeviceReady, false);
+         app.receivedEvent();
      //  alert('третья ступень, показ банера включен!'); 
     },
     
-    receivedEvent: function(id){
-        var menuItem = document.getElementById(id);
-        menuItem.setAttribute('style', 'display:block;');
+    receivedEvent: function(){
+        var menuItem = document.getElementById('menuItem');
+        menuItem.style.display = 'block';
     }
     // Update DOM on a Received Event
 };
