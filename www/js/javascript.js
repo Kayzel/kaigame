@@ -45,6 +45,10 @@
         var Wbox = box.clientHeight || box.offsetHeight;
         var Hbox = box.clientWidth || box.offsetWidth;
         //td.getAttribute('height') // 
+        
+     controler = document.getElementById('control');
+    controlCtx = controler.getContext('2d'); 
+        
     canvas = document.getElementById("snaki");
     ctx = canvas.getContext('2d'); 
     canvas.style.zIndex = 7;    
@@ -56,9 +60,9 @@
             
             
            canvas.width = razmX;
-           canvas.height = razmX+110;
-           
-            
+           canvas.height = razmX;
+           controler.width = razmX;
+          
            //document.getElementsByTagName('body')[0].style.width = razmX+'px';
            //document.getElementsByTagName('body')[0].style.height = razmX+'px';
 
@@ -69,17 +73,18 @@
           //  document.getElementById("conv").style.width = '100%';
          //  document.getElementById("conv").style.height = razmX+'px';               
                
-           canvas.width = razmX-120;
-           canvas.height = razmX;
-              
+           canvas.width = razmX-250;
+           canvas.height = razmX-250;
+           controler.width = razmX; 
+              box.style.width = canvas.width+'px';
                
                
 
                
   
            }
-        var p = document.getElementById('log');  
-          p.style.marginTop = canvas.height+'px';   
+       /* var p = document.getElementById('log');  
+          p.style.marginTop = canvas.height+'px';   */
             alert('ширина '+window.screen.width+' / высота '+window.screen.height);
         alert('ширина канваса '+canvas.width+' / высота канваса '+canvas.height);
             
@@ -110,23 +115,26 @@
 
     
 }
-var box = document.getElementById("conv");
+var playGame = document.getElementById('playButtonGameplay');
+var stopGame = document.getElementById('stopButtonGameplay')
+var tailScope = document.getElementById('tailScope');
+var windowMenu = document.getElementById('windowMenu');
+var box = document.getElementById('conv');
         var Wbox = box.clientHeight || box.offsetHeight;
         var Hbox = box.clientWidth || box.offsetWidth;    
-   
 //объявления переменных    
  //переменная отвечающая за поле уровней сложности.
 var dl 
-    if(screen.width<window.screen.height){
+    if(window.screen.width<window.screen.height){
         var razmX = Hbox;
           dl = razmX;
-           }else if(screen.width>screen.height){
-             var razmX = Wbox-120;   
+           }else if(window.screen.width>window.screen.height){
+             var razmX = Wbox-250;  
            dl = razmX;
            }
    
 var bl = dl /20;
-log('Версия игры 0.1 / размер ячейки '+bl);
+alert('Версия игры 0.2.1 / размер ячейки '+bl);
    
 var muvet;
 var up, down, left, right; // кнопки
@@ -172,7 +180,7 @@ function game(){ // функция игры
     
     appleDrow(); //функция отрисовки яблок
 
-    randomRA(); //функция рандома позиции яблока
+     //функция рандома позиции яблока
     for(var i=0; i<rApple.length;i++){ //цикл отрисоавки гнилых яблок
             rottenAppleDrow();
             ctx.fillRect(rApple[i].x*gs,rApple[i].y*gs,gs-2,gs-2);
@@ -183,8 +191,7 @@ function game(){ // функция игры
             //alert('ты проиграл! мина!');
             filed();
              //buttondown = 0;
-             randomRA();
-             randomA();
+             
             // starter();
            //вывод на экран значений длины и гнилых яблок
          } // если координаты гнилых яблок и обычных совпадают для обычных ищем новое место
@@ -201,8 +208,8 @@ function game(){ // функция игры
     
     //цикл по отрисовки туловища змеи
     for(var i=0; i<trail.length;i++){
-       ctx.fillStyle="cyan"; ctx.fillRect(trail[i].x*gs,trail[i].y*gs,gs-2,gs-2);
-       
+       ctx.fillStyle="cyan";
+        ctx.fillRect(trail[i].x*gs,trail[i].y*gs,gs-2,gs-2);
         if(trail[i].x==hx && trail[i].y==hy){ 
             tail=1;
             clearInterval(kuk);
@@ -210,8 +217,7 @@ function game(){ // функция игры
            // alert('ты проиграл!');
             filed();
             //buttondown = 0;
-            randomRA();
-            randomA();
+
             
             //starter();
             
@@ -231,8 +237,8 @@ function game(){ // функция игры
     trail.push({x:hx,y:hy});
     while(trail.length>tail){
         otlovsnak.push(trail[0]);
-         ctx.fillStyle="#C0C0C0";
-         ctx.fillRect(otlovsnak[0].x*gs-2,otlovsnak[0].y*gs-2,gs+2,gs+2);
+        //ctx.fillStyle="#C0C0C0";  ctx.fillRect
+        ctx.clearRect(otlovsnak[0].x*gs-2,otlovsnak[0].y*gs-2,gs+2,gs+2);
         otlovsnak.shift();
         trail.shift();
         
@@ -242,21 +248,28 @@ function game(){ // функция игры
         
     }
     
+    
+   collisionAppleHead();
+   
+}
+
+    
+function collisionAppleHead(){
     if(ax==hx && ay==hy){
         tail++;
         randomA();
-        randomRA();      
         buttondown = buttondown + plusRA;
-        
-        
+        randomRA();      
+        tailScope.innerHTML = tail-1;
+       
         var obg={"kik":1}; 
         obg.kik = tail;
-        console.log(obg);
+        
         
         
         var sobg = JSON.stringify(obg);
         
-        if(plusRA > 5){
+        if(plusRA == 1){
             if(localStorage.getItem('1') == null){localStorage.setItem('1',JSON.stringify(obg));} 
             var prov = JSON.parse(localStorage.getItem('1'));
             if(prov.kik<tail){localStorage.setItem('1',JSON.stringify(obg));}}
@@ -277,31 +290,43 @@ function game(){ // функция игры
             var prov = JSON.parse(localStorage.getItem('5'));
             if(prov.kik<tail){localStorage.setItem('5',JSON.stringify(obg));}}
     }
-    
-   butmuve(); 
-   
-}
-
+}      
+       
     
 function filed(){
     //location.reload();
-    console.log(rApple);
-    buttondown = plusRA;
-    while(rApple.length>0){
-        rApple.shift();    
+    
+   // console.log(rApple);
+    stopGame.style.display = 'none';
+    playGame.style.display = 'none';
+    while(rApple.length!==0){
+        rApple.pop();    
     }
+    controlCtx.clearRect(0,0,canvas.width,canvas.height);
+    
+    
+    
+    //randomRA();
+    randomA();
+    
     document.getElementById('filedMenu').style.display = 'block';
     
+    
+    
+    
     document.getElementById('buttonReload').onclick = function(event){
-        ctx.fillStyle="#C0C0C0";
-        ctx.fillRect(0,0,canvas.width,canvas.height);
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        
+       /* ctx.fillStyle="#C0C0C0";
+        ctx.fillRect(0,0,canvas.width,canvas.height);*/
         start();
         document.getElementById('filedMenu').style.display = 'none';
         
     }
     document.getElementById('buttonMenu').onclick = function(event){
-         ctx.fillStyle="#C0C0C0";
-         ctx.fillRect(0,0,canvas.width,canvas.height);
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        /* ctx.fillStyle="#C0C0C0";
+         ctx.fillRect(0,0,canvas.width,canvas.height);*/
         
         var num1 = JSON.parse(localStorage.getItem('1'));
         var num2 = JSON.parse(localStorage.getItem('2'));
@@ -319,6 +344,7 @@ function filed(){
         document.getElementById('windowMenu').style.display = 'block';
         document.getElementById('filedMenu').style.display = 'none';
     }
+    tailScope.innerHTML = 0;
 }
 function starter(){
     //выбор уровня сложности.
@@ -326,45 +352,43 @@ function starter(){
     //ctx.clearRect(0,0,canvas.width,canvas.height);
      //   start();  
     document.getElementById('easy').onclick = function(event){
-        buttondown = 1;
         plusRA = 1;
-        document.getElementById('windowMenu').style.display = 'none';
-        randomRA();
+        windowMenu.style.display = 'none';
         start();
-        
     }
     document.getElementById('normal').onclick = function(){
-        buttondown = 2;
         plusRA = 2;
-        document.getElementById('windowMenu').style.display = 'none';
-        randomRA();
+        windowMenu.style.display = 'none';
         start();
     }
     document.getElementById('hard').onclick = function(){
-        buttondown = 3;
         plusRA = 3;
-        document.getElementById('windowMenu').style.display = 'none';
-        randomRA();
+        windowMenu.style.display = 'none';
         start();
     } 
     document.getElementById('heroic').onclick = function(){
-        buttondown = 4;
         plusRA = 4;
-        document.getElementById('windowMenu').style.display = 'none';
-        randomRA();
+        windowMenu.style.display = 'none';
         start();
     } 
     document.getElementById('dragon').onclick = function(){
-        buttondown = 5;
         plusRA = 5;
-        document.getElementById('windowMenu').style.display = 'none'; 
-        randomRA();
+        windowMenu.style.display = 'none';
         start();
     }
     
 }
-    
-    
+playGame.onclick = function(){
+    kuk = setInterval(game,100);
+    playGame.style.display = 'none';
+    stopGame.style.display = 'inline';
+}
+stopGame.onclick = function(){
+    clearInterval(kuk);
+    playGame.style.display = 'inline';
+    stopGame.style.display = 'none';
+}
+
  
 /*
     ctx.fillStyle = "#00F";
@@ -376,30 +400,14 @@ function starter(){
     
     bl - Размер ячейки
     dl - размер для канваса
-*/    
-function record(){
-   
-}
- 
-    
-function menue(){
-    
-}
+*/ 
 
-    
-    
-function choice(){
-    
-}   
-    
-
-    
-    
-function start() {        
-      clearInterval(kuk);
+function start() { 
+        stopGame.style.display = 'inline';
+        buttondown = plusRA;
+        randomRA();
+        clearInterval(kuk);
         ctx.clearRect(0,0,canvas.width,canvas.height);
-        ctx.fillStyle="#C0C0C0";
-        ctx.fillRect(0,0,canvas.width,canvas.height);
         control();
         document.addEventListener("keydown", keyPush);
         kuk = setInterval(game,100);   
@@ -408,42 +416,46 @@ function start() {
     
 function control(){
     
-            ctx.fillStyle="#4a3737";
-        ctx.fillRect(0,bl*20,dl,bl*5);
+       //     ctx.fillStyle="#4a3737";
+     //   ctx.fillRect(0,bl*20,dl,bl*5);
+    
+    
+      //   controler = document.getElementById('control');
+  //  controlCtx = controler.getContext('2d'); 
 
-            ctx.fillStyle="white";
-        ctx.fillRect(bl*2,bl*20+bl/2,bl*3,bl*2+bl/2);
+            controlCtx.strokeStyle="#ed8f62";
+        controlCtx.strokeRect(bl*2,bl*2+bl/2,bl*3,bl*2+bl/2);
          //   log("Левая кнопка x- "+bl*2+' y- '+(bl*20+bl/2)+' ширина- '+bl*3+' высота- '+(bl*2+bl/2));
-            ctx.fillStyle="white";
-        ctx.fillRect(bl*6,bl*20+bl/2,bl*3,bl*2+bl/2);
+            
+        controlCtx.strokeRect(bl*6,bl*2+bl/2,bl*3,bl*2+bl/2);
 
-            ctx.fillStyle="white";
-        ctx.fillRect(bl*11,bl*20+bl/2,bl*3,bl*2+bl/2);
+            
+        controlCtx.strokeRect(bl*11,bl*2+bl/2,bl*3,bl*2+bl/2);
 
-            ctx.fillStyle="white";
-        ctx.fillRect(bl*15,bl*20+bl/2,bl*3,bl*2+bl/2);
+            
+        controlCtx.strokeRect(bl*15,bl*2+bl/2,bl*3,bl*2+bl/2);
     
     
     
      picUp = new Image(); 
      picUp.src = 'img/up-128.png';
         picUp.onload = function() {
-            ctx.drawImage(picUp, bl*2, bl*20+bl/2,bl*3,bl*2+bl/2);
+            controlCtx.drawImage(picUp, bl*2, bl*2+bl/2,bl*3,bl*2+bl/2);
         }
      picDown = new Image(); 
      picDown.src = 'img/down-128.png';
         picDown.onload = function() {
-            ctx.drawImage(picDown, bl*6,bl*20+bl/2,bl*3,bl*2+bl/2);
+            controlCtx.drawImage(picDown, bl*6,bl*2+bl/2,bl*3,bl*2+bl/2);
         }
      picLeft = new Image(); 
      picLeft.src = 'img/left-128.png';
         picLeft.onload = function() {
-            ctx.drawImage(picLeft, bl*11,bl*20+bl/2,bl*3,bl*2+bl/2);
+            controlCtx.drawImage(picLeft, bl*11,bl*2+bl/2,bl*3,bl*2+bl/2);
         }
      picRight = new Image(); 
      picRight.src = 'img/right-128.png';
         picRight.onload = function() {
-            ctx.drawImage(picRight, bl*15,bl*20+bl/2,bl*3,bl*2+bl/2);
+            controlCtx.drawImage(picRight, bl*15,bl*2+bl/2,bl*3,bl*2+bl/2);
         }
     
             
@@ -456,11 +468,11 @@ function control(){
        function startup() {
             
           //var el = document.getElementsByTagName("canvas")[0];
-          canvas.addEventListener("touchstart", handleStart, false);
+          controler.addEventListener("touchstart", handleStart, false);
        //   canvas.addEventListener("touchend", handleEnd, false);
        //   canvas.addEventListener("touchcancel", handleCancel, false);
         //  canvas.addEventListener("touchmove", handleMove, false);
-          log("initialized.");
+         // log("initialized.");
            
         }
     
@@ -471,29 +483,30 @@ function control(){
           event.preventDefault();
         //  log("touchstart.");
           var touches = event.changedTouches;
-          var x = touch.pageX, 
-              y = touch.pageY;
+          var x = touch.pageX - event.target.offsetLeft, 
+              y = touch.pageY - event.target.offsetTop;
          // log("тачгор "+x+' тачверт '+y);  
           for (var i = 0; i < touches.length; i++) {
             
-            
+            console.log('touch');
               
             //x = touches[i].pageX;//e.pageX - e.target.offsetLeft,
             //y = touches[i].pageY;//e.pageY - e.target.offsetTop;
               
-            if((x>bl*2&&x<bl*2+bl*3)&&(y>(bl*20)+(bl/2)&&y<(bl*20)+(bl/2)+(bl*2)+(bl/2))){
+            if((x>bl*2&&x<bl*2+bl*3)&&(y>(bl*2)+(bl/2)&&y<(bl*2)+(bl/2)+(bl*2)+(bl/2))){
                  xv= yv != 1 ?  0 : xv;
                  yv= yv != 1 ? -1 : yv;
+                
             }
-            if((x>bl*6&&x<bl*6+bl*3)&&(y>bl*20+bl/2&&y<bl*20+bl/2+bl*2+bl/2)){
+            if((x>bl*6&&x<bl*6+bl*3)&&(y>bl*2+bl/2&&y<bl*2+bl/2+bl*2+bl/2)){
                  xv= yv != -1 ? 0 : xv;
                  yv= yv != -1 ? 1 : yv;
             }
-            if((x>bl*11&&x<bl*11+bl*3)&&(y>bl*20+bl/2&&y<bl*20+bl/2+bl*2+bl/2)){
+            if((x>bl*11&&x<bl*11+bl*3)&&(y>bl*2+bl/2&&y<bl*2+bl/2+bl*2+bl/2)){
                  xv= xv != 1 ? -1 : xv;
                  yv= xv != 1 ?  0 : yv;
             }
-            if((x>bl*15&&x<bl*15+bl*3)&&(y>bl*20+bl/2&&y<bl*20+bl/2+bl*2+bl/2)){
+            if((x>bl*15&&x<bl*15+bl*3)&&(y>bl*2+bl/2&&y<bl*2+bl/2+bl*2+bl/2)){
                  xv= xv != -1 ?  1 : xv;
                  yv= xv != -1 ?  0 : yv;
             }   
@@ -734,12 +747,12 @@ function keyPush(event){
             ongoingTouches.splice(i, 1);  // remove it; we're done
           }
         }
-        */
+        
         function log(msg) {
           var p = document.getElementById('log');
           p.innerHTML = msg + "\n" + p.innerHTML;
            
         } 
-    
+    */
     
 })()

@@ -35,19 +35,20 @@ var app = {
     onDeviceReady: function() {
         
        
-        alert('первая ступень!');
+       // alert('первая ступень!');
             admob.setOptions({
-                publisherId:          "ca-app-pub-2752832807213349/8254785464",  // Required
+                publisherId:          "ca-app-pub-2752832807213349~8254785464",  // Required
                 interstitialAdId:     "ca-app-pub-2752832807213349/2591395245",  // Optional
             /*    tappxIdiOS:           "/XXXXXXXXX/Pub-XXXX-iOS-IIII",            // Optional
                 tappxIdAndroid:       "/XXXXXXXXX/Pub-XXXX-Android-AAAA",        // Optional
                 tappxShare:           0.5       */                                 // Optional
+                bannerAtTop : true
             });
-        alert('вторая ступень, найдены параметры рекламы');
+        //alert('вторая ступень, найдены параметры рекламы');
                 admob.createBannerView();
         
                 admob.requestInterstitialAd();
-       alert('третья ступень, показ банера включен!'); 
+     //  alert('третья ступень, показ банера включен!'); 
     },
     // Update DOM on a Received Event
 };
