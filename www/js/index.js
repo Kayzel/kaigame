@@ -55,8 +55,7 @@ var app = {
     },
     
     receivedEvent: function(){
-        var menuItem = document.getElementById('menuItem');
-        menuItem.style.display = 'block';
+        document.getElementById('menuItem').style.display = 'block';
     }
     // Update DOM on a Received Event
 };
