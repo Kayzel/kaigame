@@ -33,7 +33,7 @@
              
              document.getElementById('klik').style.marginTop = dl+'px'; 
         */
-        
+       
     //присваивание кнопок уровней сложности переменным
      
        

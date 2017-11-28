@@ -33,7 +33,7 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-       
+       app.receivedEvent();
        
        // alert('первая ступень!');
             admob.setOptions({
@@ -50,12 +50,15 @@ var app = {
                 admob.requestInterstitialAd();
         
         
-         app.receivedEvent();
+         
      //  alert('третья ступень, показ банера включен!'); 
     },
     
     receivedEvent: function(){
-        document.getElementById('menuItem').style.display = 'block';
+      var menue = document.getElementsByClassName('menuItem');
+        for(var i = 0; i<menue.length; i++){
+            menue[i].style.display = 'block';
+        }
     }
     // Update DOM on a Received Event
 };
