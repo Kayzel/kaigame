@@ -48,7 +48,14 @@ var app = {
                 admob.createBannerView();
         
                 admob.requestInterstitialAd();
+        
+        app.receivedEvent('menuItem');
      //  alert('третья ступень, показ банера включен!'); 
     },
+    
+    receivedEvent: function(id){
+        var menuItem = document.getElementById(id);
+        menuItem.style.display = 'block';
+    }
     // Update DOM on a Received Event
 };
