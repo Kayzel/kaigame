@@ -134,7 +134,7 @@ var dl
            }
    
 var bl = dl /20;
-alert('Версия игры 0.2.1 / размер ячейки '+bl);
+//alert('Версия игры 0.2.1 / размер ячейки '+bl);
    
 var muvet;
 var up, down, left, right; // кнопки
