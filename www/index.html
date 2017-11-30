@@ -49,40 +49,44 @@
 <div id="conv" style="z-index: 0;">
    
     <div class="menu" id="windowMenu">
-       <lable id="logo"><img id="logoimg" src="css/img/menu1.png" alt=""><p id="logotext">HardSnake</p></lable>
+       <lable id="logo"><img id="logoimg" src="img/logo2.png" alt=""></lable>
         <input class="burger_menu_chek2" type="checkbox" id="burger2" name="checkbox1">
         <label class="menuItem menuItemStart" id="startGame" for="burger2">Play</label>
            <div id="boxitem2">
-            <ui class="menuItem2" id="easy">Easy</ui>
-            <ui class="menuItem2" id="normal">Normal</ui>
-            <ui class="menuItem2" id="hard">Hard</ui>
-            <ui class="menuItem2" id="heroic">Heroic</ui>
-            <ui class="menuItem2" id="dragon">Dragon</ui>
+               <div id="uiItem">
+                    <ui class="menuItem2" id="easy">Easy</ui>
+                    <ui class="menuItem2" id="normal">Normal</ui>
+                    <ui class="menuItem2" id="hard">Hard</ui>
+                    <ui class="menuItem2" id="heroic">Heroic</ui>
+                    <ui class="menuItem2" id="dragon">Dragon</ui>
+                </div>
            </div> 
         <input class="burger_menu_chek" type="checkbox" id="burger">
         <label class="menuItem menuItemRec" id="recordGame" for="burger">Records</label>
            <div id="boxitem3">
-           <div id="nameItemBox3">
-            <ui class="menuItem3">Easy</ui>
-            <ui class="menuItem3">Normal </ui>
-            <ui class="menuItem3">Hard </ui>
-            <ui class="menuItem3">Heroic </ui>
-            <ui class="menuItem3">Dragon </ui>
-            </div>
-            <div id="scoreitembox3">
-                <output class="score" id="recEazy">0</output>
-                <output class="score" id="recEazy2">0</output>
-                <output class="score" id="recEazy3">0</output>
-                <output class="score" id="recEazy4">0</output>
-                <output class="score" id="recEazy5">0</output>
-            </div>    
+               <div id="uiItem2">
+                   <div id="nameItemBox3">
+                        <ui class="menuItem3">Easy</ui>
+                        <ui class="menuItem3">Normal </ui>
+                        <ui class="menuItem3">Hard </ui>
+                        <ui class="menuItem3">Heroic </ui>
+                        <ui class="menuItem3">Dragon </ui>
+                    </div>
+                    <div id="scoreitembox3">
+                        <output class="score" id="recEazy">0</output>
+                        <output class="score" id="recEazy2">0</output>
+                        <output class="score" id="recEazy3">0</output>
+                        <output class="score" id="recEazy4">0</output>
+                        <output class="score" id="recEazy5">0</output>
+                    </div>
+                </div>    
            </div>     
 <!--         <ui class="menuItem">Настройки</ui>
         <ui class="menuItem">Выход</ui> -->
     </div>
     <div class="menuFiled" id="filedMenu">
            <div class="filedWindow">
-            <h2>Game Over! :(</h2>
+            <h3>Game Over! :(</h3>
             <button id="buttonReload">Restart</button>
             <button id="buttonMenu">Menu</button>
            </div>

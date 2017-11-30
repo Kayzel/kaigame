@@ -315,6 +315,7 @@ function filed(){
     
     
     document.getElementById('buttonReload').onclick = function(event){
+        tailScope.innerHTML = 0;
         ctx.clearRect(0,0,canvas.width,canvas.height);
         
        /* ctx.fillStyle="#C0C0C0";
@@ -324,6 +325,7 @@ function filed(){
         
     }
     document.getElementById('buttonMenu').onclick = function(event){
+        tailScope.innerHTML = 0;
         ctx.clearRect(0,0,canvas.width,canvas.height);
         /* ctx.fillStyle="#C0C0C0";
          ctx.fillRect(0,0,canvas.width,canvas.height);*/
@@ -344,7 +346,7 @@ function filed(){
         document.getElementById('windowMenu').style.display = 'block';
         document.getElementById('filedMenu').style.display = 'none';
     }
-    tailScope.innerHTML = 0;
+    //tailScope.innerHTML = 0;
 }
 function starter(){
     //выбор уровня сложности.
