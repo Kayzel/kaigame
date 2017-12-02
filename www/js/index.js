@@ -37,8 +37,8 @@ var app = {
        
        // alert('первая ступень!');
             admob.setOptions({
-                publisherId:          "ca-app-pub-2752832807213349~8254785464",  // Required
-                interstitialAdId:     "ca-app-pub-2752832807213349/2591395245",  // Optional
+                publisherId:          "ca-app-pub-2752832807213349~6238961797",  // Required
+                interstitialAdId:     "ca-app-pub-2752832807213349/2584278507",  // Optional
             /*    tappxIdiOS:           "/XXXXXXXXX/Pub-XXXX-iOS-IIII",            // Optional
                 tappxIdAndroid:       "/XXXXXXXXX/Pub-XXXX-Android-AAAA",        // Optional
                 tappxShare:           0.5       */                                 // Optional
