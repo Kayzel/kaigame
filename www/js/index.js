@@ -35,8 +35,8 @@ var app = {
     
     funcBanner: function(){
             admob.setOptions({
-                    publisherId: "ca-app-pub-2752832807213349/6238961797",
-                    interstitialAdId: "ca-app-pub-2752832807213349/2584278507",
+                    publisherId: "ca-app-pub-2752832807213349/2584278507",
+                   // interstitialAdId: "ca-app-pub-2752832807213349/2584278507",
                // publisherId:          "ca-app-pub-2752832807213349~6238961797",  // Required
              //   interstitialAdId:     "ca-app-pub-2752832807213349/2584278507",  // Optional
             /*    tappxIdiOS:           "/XXXXXXXXX/Pub-XXXX-iOS-IIII",            // Optional
