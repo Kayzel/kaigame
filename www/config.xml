@@ -10,8 +10,7 @@
     <content src="index.html" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="14" />
-    <gap:plugin name="com.admob.plugin" version="3.0.0" source="plugins.cordova.io" />
-    
+    <gap:plugin name="phonegap-admob" source="npm" version="4.1.14"/>
     <platform name="android">      
         <icon density="ldpi" src="www/res/icon/android/drawable-ldpi-icon.png" />
         <icon density="mdpi" src="www/res/icon/android/drawable-mdpi-icon.png" />
