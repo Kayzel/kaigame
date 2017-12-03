@@ -32,24 +32,28 @@ var app = {
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
-       
-       
-       // alert('первая ступень!');
+    
+    funcBanner: function(){
             admob.setOptions({
+                    publisherId: "ca-app-pub-2752832807213349/6238961797",
+                    interstitialAdId: "ca-app-pub-2752832807213349/2584278507",
                // publisherId:          "ca-app-pub-2752832807213349~6238961797",  // Required
              //   interstitialAdId:     "ca-app-pub-2752832807213349/2584278507",  // Optional
             /*    tappxIdiOS:           "/XXXXXXXXX/Pub-XXXX-iOS-IIII",            // Optional
                 tappxIdAndroid:       "/XXXXXXXXX/Pub-XXXX-Android-AAAA",        // Optional
                 tappxShare:           0.5       */                                 // Optional
-                bannerAtTop : true
-            });
-        //alert('вторая ступень, найдены параметры рекламы');
-                admob.createBannerView({
-                    publisherId:          "ca-app-pub-2752832807213349/6238961797",
-                    interstitialAdId: "ca-app-pub-2752832807213349/2584278507",
                     bannerAtTop : true
-                });
+            });
+    },
+    
+    onDeviceReady: function() {
+       
+        app.funcBanner();
+       // alert('первая ступень!');
+
+        //alert('вторая ступень, найдены параметры рекламы');
+        
+        admob.createBannerView();
         app.receivedEvent();
             //    admob.requestInterstitialAd();
         
