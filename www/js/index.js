@@ -33,24 +33,25 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-       app.receivedEvent();
        
+       admob.initAdmob("ca-app-pub-2752832807213349/6238961797","ca-app-pub-2752832807213349/2584278507");
+        admob.showBanner(admob.BannerSize.BANNER, admob.Position.TOP_APP);
        // alert('первая ступень!');
-            admob.setOptions({
-               // publisherId:          "ca-app-pub-2752832807213349~6238961797",  // Required
-             //   interstitialAdId:     "ca-app-pub-2752832807213349/2584278507",  // Optional
-            /*    tappxIdiOS:           "/XXXXXXXXX/Pub-XXXX-iOS-IIII",            // Optional
-                tappxIdAndroid:       "/XXXXXXXXX/Pub-XXXX-Android-AAAA",        // Optional
-                tappxShare:           0.5       */                                 // Optional
-                bannerAtTop : true
-            });
+//            admob.setOptions({
+//               // publisherId:          "ca-app-pub-2752832807213349~6238961797",  // Required
+//             //   interstitialAdId:     "ca-app-pub-2752832807213349/2584278507",  // Optional
+//            /*    tappxIdiOS:           "/XXXXXXXXX/Pub-XXXX-iOS-IIII",            // Optional
+//                tappxIdAndroid:       "/XXXXXXXXX/Pub-XXXX-Android-AAAA",        // Optional
+//                tappxShare:           0.5       */                                 // Optional
+//                bannerAtTop : true
+//            });
         //alert('вторая ступень, найдены параметры рекламы');
-                admob.createBannerView({
-                    publisherId:          "ca-app-pub-2752832807213349/6238961797",
-                    interstitialAdId: "ca-app-pub-2752832807213349/2584278507",
-                    bannerAtTop : true
-                });
-        
+//                admob.createBannerView({
+//                    publisherId:          "ca-app-pub-2752832807213349/6238961797",
+//                    interstitialAdId: "ca-app-pub-2752832807213349/2584278507",
+//                    bannerAtTop : true
+//                });
+        app.receivedEvent();
             //    admob.requestInterstitialAd();
         
         
