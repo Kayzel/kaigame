@@ -47,6 +47,7 @@ var app = {
         //alert('вторая ступень, найдены параметры рекламы');
                 admob.createBannerView({
                     publisherId:          "ca-app-pub-2752832807213349/6238961797",
+                    interstitialAdId: "ca-app-pub-2752832807213349/2584278507",
                     bannerAtTop : true
                 });
         
