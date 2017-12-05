@@ -36,7 +36,7 @@ var app = {
     funcBanner: function(){
             admob.setOptions({
                     publisherId: "ca-app-pub-2752832807213349/2584278507",
-                   // interstitialAdId: "ca-app-pub-2752832807213349/2584278507",
+                    interstitialAdId: "ca-app-pub-2752832807213349/8368912051",
                // publisherId:          "ca-app-pub-2752832807213349~6238961797",  // Required
              //   interstitialAdId:     "ca-app-pub-2752832807213349/2584278507",  // Optional
             /*    tappxIdiOS:           "/XXXXXXXXX/Pub-XXXX-iOS-IIII",            // Optional
@@ -47,10 +47,10 @@ var app = {
             });
     },
     
-    onDeviceReady: function(luser) {
+    onDeviceReady: function() {
         
-        
-        lus = false || luser;
+       // var showinters = arrec();
+            console.log('asdfg');
         
         app.funcBanner();
        // alert('первая ступень!');
@@ -59,13 +59,15 @@ var app = {
         
         admob.createBannerView();
         app.receivedEvent();
-            //    admob.requestInterstitialAd();
+        admob.requestInterstitialAd();
         
-        if(lus){
-            admob.requestInterstitialAd({
-                publisherId: "ca-app-pub-2752832807213349/8368912051",
-            });
-           }
+       
+        
+        //document.getElementById('filedMenu');
+        
+       
+           //     publisherId: "ca-app-pub-2752832807213349/8368912051",
+           
          
      //  alert('третья ступень, показ банера включен!'); 
     },
