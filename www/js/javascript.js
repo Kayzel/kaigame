@@ -1,4 +1,3 @@
-(function(){
     window.onload=function(){ 
         
     /*
@@ -148,17 +147,16 @@ var rax=ray=15; // координаты гнилого яблока
 var xv=yv=0; // движение
 var trail=[]; // массив длины змейки
 var rApple=[]; //массив гнилых яблок
-var otlovsnak=[]; // массив для стерания змейки
 var tail=1; // длина змейки
 var event;
 var buttondown = 0; // переменная уровня сложности
 var rottenApple; // сомнительная переменная
 var level1, level2, level3, level4, level5; //ур сложности
 var plusRA = 0; // переменная уровня сложности
+var luser = false;
 
-function game(){ // функция игры
-     
     
+function sdv(){
     hx+=xv;
     hy+=yv;
     if(hx<0){
@@ -173,6 +171,14 @@ function game(){ // функция игры
     if(hy>tc-1){
         hy=0;
     }
+ }  
+    
+    
+function game(){ // функция игры
+    sdv();
+     ctx.clearRect(0,0,canvas.width,canvas.height);
+  
+    
 
     
 //    ctx.fillStyle="#C0C0C0";
@@ -188,6 +194,7 @@ function game(){ // функция игры
         if(rApple[i].x==hx && rApple[i].y==hy){
             clearInterval(kuk);
             tail=1; 
+            luser = true;
             //alert('ты проиграл! мина!');
             filed();
              //buttondown = 0;
@@ -213,7 +220,7 @@ function game(){ // функция игры
         if(trail[i].x==hx && trail[i].y==hy){ 
             tail=1;
             clearInterval(kuk);
-             
+             luser = true;
            // alert('ты проиграл!');
             filed();
             //buttondown = 0;
@@ -236,10 +243,7 @@ function game(){ // функция игры
     
     trail.push({x:hx,y:hy});
     while(trail.length>tail){
-        otlovsnak.push(trail[0]);
         //ctx.fillStyle="#C0C0C0";  ctx.fillRect
-        ctx.clearRect(otlovsnak[0].x*gs-2,otlovsnak[0].y*gs-2,gs+2,gs+2);
-        otlovsnak.shift();
         trail.shift();
         
     }
@@ -256,11 +260,12 @@ function game(){ // функция игры
     
 function collisionAppleHead(){
     if(ax==hx && ay==hy){
+        happyBlock();
         tail++;
         randomA();
         buttondown = buttondown + plusRA;
         randomRA();      
-        tailScope.innerHTML = tail-1;
+        tailScope.innerHTML = tail;
        
         var obg={"kik":1}; 
         obg.kik = tail;
@@ -291,11 +296,105 @@ function collisionAppleHead(){
             if(prov.kik<tail){localStorage.setItem('5',JSON.stringify(obg));}}
     }
 }      
-       
+function happyBlock(){
+    var tt = 20;
+      // Inital starting position
+      var posX = ax,
+          posY = ay;
+    
+      // No longer setting velocites as they will be random
+      // Set up object to contain particles and set some default values
+      var particles = {},
+          particleIndex = 0,
+          settings = {
+            density: 10,
+            particleSize: 10,
+            startingX: posX*gs,
+            startingY: posY*gs,
+            gravity: 0.5
+          };
+
+      // Set up a function to create multiple particles
+      function Particle() {
+        // Establish starting positions and velocities
+        this.x = settings.startingX;
+        this.y = settings.startingY;
+
+        // Determine original X-axis speed based on setting limitation
+        this.vx = Math.random() * 3 - 1;
+        this.vy = Math.random() * 3 - 1;
+
+        // Add new particle to the index
+        // Object used as it's simpler to manage that an array
+        particleIndex ++;
+        particles[particleIndex] = this;
+        this.id = particleIndex;
+        this.life = 0;
+        this.maxLife = 100;
+        this.tt = Math.random() * 20 - 5;
+      }
+
+      // Some prototype methods for the particle's "draw" function
+      Particle.prototype.draw = function() {
+        this.x += this.vx;
+        this.y += this.vy;
+        this.tt =  this.tt >=0?  this.tt -=0.2 : 0; 
+        // Adjust for gravity
+       // this.vy += settings.gravity;
+           if(luser){
+               stopTik();
+            } else{
+               setTimeout(stopTik,3000); 
+            }
+        // Age the particle
+        this.life++;
+
+        // If Particle is old, it goes in the chamber for renewal
+        if (this.life >= this.maxLife) {
+          delete particles[this.id];
+        }
+
+        // Create the shapes
+        //ctx.clearRect(settings.leftWall, settings.groundLevel, canvas.width, canvas.height);
+        ctx.fillStyle="#ffffff";
+          
+        // Draws a circle of radius 20 at the coordinates 100,100 on the canvas
+        ctx.fillRect(this.x, this.y, this.tt,this.tt);  
+          
+
+      }
+
+       var tiki = setInterval(bums, 1000/36);
+
+        function stopTik(){
+            clearInterval(tiki);
+        }
+   
+        
+    
+    function bums() {
+        
+        //ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Draw the particles
+        for (var i = 0; i < settings.density; i++) {
+          if (Math.random() > 0.97) {
+            // Introducing a random chance of creating a particle
+            // corresponding to an chance of 1 per second,
+            // per "density" value
+            new Particle();
+          }
+        }
+
+        for (var i in particles) {
+          particles[i].draw();
+        }
+      }
+}       
     
 function filed(){
     //location.reload();
-    
+    app.onDeviceReady(luser);
    // console.log(rApple);
     stopGame.style.display = 'none';
     playGame.style.display = 'none';
@@ -382,10 +481,13 @@ function starter(){
 }
 playGame.onclick = function(){
     kuk = setInterval(game,100);
+    luser = false;
     playGame.style.display = 'none';
     stopGame.style.display = 'inline';
 }
 stopGame.onclick = function(){
+    luser = true;
+    app.onDeviceReady(luser);
     clearInterval(kuk);
     playGame.style.display = 'inline';
     stopGame.style.display = 'none';
@@ -405,6 +507,7 @@ stopGame.onclick = function(){
 */ 
 
 function start() { 
+        luser = false;
         stopGame.style.display = 'inline';
         buttondown = plusRA;
         randomRA();
@@ -462,8 +565,8 @@ function control(){
     
     
         function handleStart(event) {
-          var touch = event.touches[0];
-            console.log(touch);
+            var touch = event.touches[0];
+         //   console.log(touch);
           event.preventDefault();
  
           var touches = event.changedTouches;
@@ -471,25 +574,41 @@ function control(){
               y = touch.pageY - event.target.offsetTop;
   
           for (var i = 0; i < touches.length; i++) {
-            
-            console.log('touch');
+      
+       // var x = touch.pageX - event.target.offsetLeft,
+    //        y = touch.pageY - event.target.offsetTop;
+              
+            console.log(x+' '+y);
+               console.log(x-10+' '+y);
+              console.log(touch.radiusX+' '+touch.radiusY);
+           
               //up
-            if((x>dl/2-bl*3/2&&x<dl/2-bl*3/2+bl*3)&&(y>bl-bl/2&&y<bl-bl/2+bl*2+bl/2)){
+            if((x+touch.radiusX>dl/2-bl*3/2&&x<dl/2-bl*3/2+bl*3+touch.radiusX)&&(y+touch.radiusY>bl-bl/2&&y<bl-bl/2+bl*2+bl/2+touch.radiusY)){
                  xv= yv != 1 ?  0 : xv;
                  yv= yv != 1 ? -1 : yv;
             } //down
-            if((x>dl/2-bl*3/2&&x<dl/2-bl*3/2+bl*3)&&(y>bl*6-bl/2&&y<bl*6-bl/2+bl*2+bl/2)){
+            else if((x+touch.radiusX>dl/2-bl*3/2&&x<dl/2-bl*3/2+bl*3+touch.radiusX)&&(y+touch.radiusY>bl*6-bl/2&&y<bl*6-bl/2+bl*2+bl/2+touch.radiusY)){
                  xv= yv != -1 ? 0 : xv;
                  yv= yv != -1 ? 1 : yv;
             } //left
-            if((x>bl*5.5&&x<bl*5.5+bl*3)&&(y>bl*3&&y<bl*3+bl*2+bl/2)){
+            else if((x+touch.radiusX>bl*5.5&&x<bl*5.5+bl*3+touch.radiusX)&&(y+touch.radiusY>bl*3&&y<bl*3+bl*2+bl/2+touch.radiusY)){
                  xv= xv != 1 ? -1 : xv;
                  yv= xv != 1 ?  0 : yv;
             } //right
-            if((x>bl*11.5&&x<bl*11.5+bl*3)&&(y>bl*3&&y<bl*3+bl*2+bl/2)){
+            else if((x+touch.radiusX>bl*11.5&&x<bl*11.5+bl*3+touch.radiusX)&&(y+touch.radiusY>bl*3&&y<bl*3+bl*2+bl/2+touch.radiusY)){
                  xv= xv != -1 ?  1 : xv;
                  yv= xv != -1 ?  0 : yv;
-            }   
+            } 
+              
+            //ongoingTouches.push(copyTouch(touches[i]));
+            var color = 'white';//colorForTouch(touches[i]);
+            controlCtx.beginPath();
+            controlCtx.fillStyle = color;
+            controlCtx.arc(x, y, 10, 0, 2 * Math.PI, false);  // a circle at the start
+            
+            controlCtx.fill();
+          // log("touchstart:" + x+'>'+bl*2+"...");//log("touchstart:" + i + ".");
+              
           }
         }  
       }    
@@ -835,5 +954,3 @@ function keyPush(event){
            
         } 
     */
-    
-})()

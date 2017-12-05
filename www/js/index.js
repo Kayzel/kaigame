@@ -46,8 +46,11 @@ var app = {
             });
     },
     
-    onDeviceReady: function() {
-       
+    onDeviceReady: function(luser) {
+        
+        
+        
+        
         app.funcBanner();
        // alert('первая ступень!');
 
@@ -57,7 +60,11 @@ var app = {
         app.receivedEvent();
             //    admob.requestInterstitialAd();
         
-        
+        if(luser){
+            admob.requestInterstitialAd({
+                publisherId: "ca-app-pub-2752832807213349/8368912051",
+            });
+           }
          
      //  alert('третья ступень, показ банера включен!'); 
     },
