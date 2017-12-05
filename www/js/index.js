@@ -49,7 +49,7 @@ var app = {
     onDeviceReady: function(luser) {
         
         
-        
+        lus = false || luser;
         
         app.funcBanner();
        // alert('первая ступень!');
@@ -60,7 +60,7 @@ var app = {
         app.receivedEvent();
             //    admob.requestInterstitialAd();
         
-        if(luser){
+        if(lus){
             admob.requestInterstitialAd({
                 publisherId: "ca-app-pub-2752832807213349/8368912051",
             });

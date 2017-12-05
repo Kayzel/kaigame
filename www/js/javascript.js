@@ -601,12 +601,12 @@ function control(){
             } 
               
             //ongoingTouches.push(copyTouch(touches[i]));
-            var color = 'white';//colorForTouch(touches[i]);
+         /*   var color = 'white';//colorForTouch(touches[i]);
             controlCtx.beginPath();
             controlCtx.fillStyle = color;
             controlCtx.arc(x, y, 10, 0, 2 * Math.PI, false);  // a circle at the start
             
-            controlCtx.fill();
+            controlCtx.fill(); */
           // log("touchstart:" + x+'>'+bl*2+"...");//log("touchstart:" + i + ".");
               
           }
