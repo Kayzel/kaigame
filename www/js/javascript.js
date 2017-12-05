@@ -481,7 +481,7 @@ function starter(){
     
 }
 playGame.onclick = function(){
-
+    kuk = setInterval(game,100); 
     playGame.style.display = 'none';
     stopGame.style.display = 'inline';
 }

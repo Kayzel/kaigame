@@ -50,7 +50,7 @@ var app = {
     onDeviceReady: function() {
         
        // var showinters = arrec();
-            console.log('asdfg');
+           
         
         app.funcBanner();
        // alert('первая ступень!');
