@@ -186,7 +186,7 @@ var level1, level2, level3, level4, level5; //ур сложности
 var plusRA = 0; // переменная уровня сложности
 var luser = false;
 var speadSnake = 100;
-
+var boxixif = box.offsetTop;
 
 
 function sdv(){
@@ -210,8 +210,11 @@ function sdv(){
 function game(){ // функция игры
     sdv();
      ctx.clearRect(0,0,canvas.width,canvas.height);
-  
-    
+    if(boxixif!=box.offsetTop){
+        boxixif = box.offsetTop;
+        control();
+    }
+    console.log(box.offsetTop+' '+boxixif);
 
     
 //    ctx.fillStyle="#C0C0C0";
@@ -565,12 +568,11 @@ function razposcontroler(){
     
    
     var wid = dl;
-    var xakh = canvas.offsetHeight;// - canvas.clientHeight;
-    var hexs = canvas.offsetTop;
     var boxix = box.offsetTop;
+    var xakh = box.offsetHeight;// - canvas.clientHeight;
+    var heig = Wboxbody;
+    var newHei = heig-(xakh+boxix)-2;
     
-    var heig = Wboxbody; //body.height - conv.x
-    var newHei = heig-(hexs+(xakh+boxix))-2;
     controler.width = wid;
     controler.height = newHei;
 }
@@ -588,12 +590,14 @@ function control(){
    
     var newHei = heig.height-(xak.x+xak.height)-30;
     */
+     var boxbody = document.getElementsByTagName('body')[0];
+        var Wboxbody = boxbody.clientHeight || boxbody.offsetHeight;
+    
     var razX = dl/3;
     var boxix = box.offsetTop;
-    var xakh = canvas.offsetHeight;// - canvas.clientHeight;
-    var hexs = canvas.offsetTop;
-    var heig = Wbox;
-    var newHei = heig-(hexs+(xakh+boxix))-2;
+    var xakh = box.offsetHeight;// - canvas.clientHeight;
+    var heig = Wboxbody;
+    var newHei = heig-(xakh+boxix)-2;
     //console.log(heig+' '+hexs+' '+xakh+' '+30);
     
     
