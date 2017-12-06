@@ -95,10 +95,11 @@
         var wid = dl;
         var xak = canvas.getBoundingClientRect();// - canvas.clientHeight;
         var heig = box.getBoundingClientRect();
+        alert(xak);
         var newHei = heig.height-(xak.x+xak.height)-30;
         var heblock = newHei/3;
-        controler.width = wid;
-        controler.height = newHei; 
+        //controler.width = wid;
+       // controler.height = newHei; 
        /* var p = document.getElementById('log');  
           p.style.marginTop = canvas.height+'px';   */
         //    alert('ширина '+window.screen.width+' / высота '+window.screen.height);
