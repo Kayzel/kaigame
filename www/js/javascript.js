@@ -99,11 +99,11 @@
         var hexs = canvas.offsetTop;
         var heig = Wbox;
         var newHei = heig-(hexs+xakh)-2;
-        console.log(heig+' '+hexs+' '+xakh+' '+30);
+        //console.log(heig+' '+hexs+' '+xakh+' '+30);
         var heblock = newHei/3;
         
-        controler.width = wid;
-        controler.height = newHei; 
+//        controler.width = wid;
+//        controler.height = newHei; 
        /* var p = document.getElementById('log');  
           p.style.marginTop = canvas.height+'px';   */
         //    alert('ширина '+window.screen.width+' / высота '+window.screen.height);
@@ -575,15 +575,15 @@ function control(){
     var hexs = canvas.offsetTop;
     var heig = Wbox;
     var newHei = heig-(hexs+xakh)-2;
-    console.log(heig+' '+hexs+' '+xakh+' '+30);
+    //console.log(heig+' '+hexs+' '+xakh+' '+30);
     
     
     var heblock = newHei/3;
     var razY = 0;
     
     
-  //  controler.width = wid;
-  //  controler.height = newHei;
+    controler.width = wid;
+    controler.height = newHei;
     /*
      width: wid,
       height: newHei
