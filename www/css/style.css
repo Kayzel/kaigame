@@ -37,8 +37,7 @@ width: 100%;
 #control{
     position: absolute;
     bottom: 0;
-    width: 100%;
-    height: 150px;
+
 /*     background: rgba(44, 5, 66,0.8); */
 }
 
@@ -93,7 +92,7 @@ width: 100%;
 #filedMenu{
     text-align: center;
     position: absolute;
-    
+    z-index: 99;
     margin: auto;
     width: 60%;
     height: 30%;

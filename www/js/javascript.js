@@ -60,7 +60,7 @@
             
            canvas.width = razmX;
            canvas.height = razmX;
-           controler.width = razmX;
+          // controler.width = razmX;
           
            //document.getElementsByTagName('body')[0].style.width = razmX+'px';
            //document.getElementsByTagName('body')[0].style.height = razmX+'px';
@@ -72,9 +72,9 @@
           //  document.getElementById("conv").style.width = '100%';
          //  document.getElementById("conv").style.height = razmX+'px';               
                
-           canvas.width = razmX-250;
-           canvas.height = razmX-250;
-           controler.width = razmX; 
+           canvas.width = razmX-280;
+           canvas.height = razmX-280;
+         //  controler.width = razmX; 
               box.style.width = canvas.width+'px';
                
                
@@ -129,13 +129,21 @@ var dl
         var razmX = Hbox;
           dl = razmX;
            }else if(window.screen.width>window.screen.height){
-             var razmX = Wbox-250;  
+             var razmX = Wbox-280;  
            dl = razmX;
            }
    
 var bl = dl /20;
 //alert('Версия игры 0.2.1 / размер ячейки '+bl);
-   
+        var imagup = new Image();
+        imagup.src = 'img/up-128.png';
+        var imagdown = new Image();
+        imagdown.src = 'img/down-128.png';
+        var imagleft = new Image();
+        imagleft.src = 'img/left-128.png';
+        var imagright = new Image();
+        imagright.src = 'img/right-128.png';
+
 var muvet;
 var up, down, left, right; // кнопки
 var kuk;  //таймер
@@ -155,8 +163,10 @@ var rottenApple; // сомнительная переменная
 var level1, level2, level3, level4, level5; //ур сложности
 var plusRA = 0; // переменная уровня сложности
 var luser = false;
+var speadSnake = 100;
 
-    
+
+
 function sdv(){
     hx+=xv;
     hy+=yv;
@@ -402,10 +412,10 @@ function filed(){
     while(rApple.length!==0){
         rApple.pop();    
     }
-    controlCtx.clearRect(0,0,canvas.width,canvas.height);
-    
-    
-    
+  //  controlCtx.clearRect(0,0,canvas.width,canvas.height);
+   // var canva = document.getElementsByTagName('canvas')[1];
+  //  var ctxCanva = canva.getContext('2d');
+    controlCtx.clearRect(0,0,controler.width,controler.height);
     //randomRA();
     randomA();
 
@@ -451,37 +461,43 @@ function filed(){
 function starter(){
     //выбор уровня сложности.
    // buttondown = 1;
+    
     //ctx.clearRect(0,0,canvas.width,canvas.height);
      //   start();  
     document.getElementById('easy').onclick = function(event){
         plusRA = 1;
         windowMenu.style.display = 'none';
+        speadSnake = 100;
         start();
     }
     document.getElementById('normal').onclick = function(){
         plusRA = 2;
         windowMenu.style.display = 'none';
+        speadSnake = 100;
         start();
     }
     document.getElementById('hard').onclick = function(){
         plusRA = 3;
         windowMenu.style.display = 'none';
+        speadSnake = 100;
         start();
     } 
     document.getElementById('heroic').onclick = function(){
         plusRA = 4;
         windowMenu.style.display = 'none';
+        speadSnake = 100;
         start();
     } 
     document.getElementById('dragon').onclick = function(){
         plusRA = 5;
         windowMenu.style.display = 'none';
+        speadSnake = 100;
         start();
     }
     
 }
 playGame.onclick = function(){
-    kuk = setInterval(game,100); 
+    kuk = setInterval(game,speadSnake); 
     playGame.style.display = 'none';
     stopGame.style.display = 'inline';
 }
@@ -514,52 +530,79 @@ function start() {
         ctx.clearRect(0,0,canvas.width,canvas.height);
         control();
         document.addEventListener("keydown", keyPush);
-        kuk = setInterval(game,100);   
+        kuk = setInterval(game,speadSnake);   
     }
 
+
 function control(){
-                controlCtx.strokeStyle="#ed8f62";
+    
+    var wid = dl;
+    var razX = dl/3;
+    //canvas.width+'px';
+    var xak = canvas.getBoundingClientRect();// - canvas.clientHeight;
+    var heig = box.getBoundingClientRect();
+   
+    var newHei = heig.height-(xak.x+xak.height)-30;
+    console.log(newHei);
+    console.log(heig);
+    var heblock = newHei/3;
+    var razY = 0;
+    console.log(wid);
+    
+    controler.width = wid;
+    controler.height = newHei;
+    /*
+     width: wid,
+      height: newHei
+          x: razX,
+      y: 0,
+      width: razX,
+      height: heblock,*/
+    
+        controlCtx.strokeStyle="#ed8f62";
     //up
-        controlCtx.strokeRect(dl/2-bl*3/2,bl-bl/2,bl*3,bl*2+bl/2);
+        controlCtx.strokeRect(razX,0,razX,heblock);
          
     //left        
-        controlCtx.strokeRect(bl*5.5,bl*3,bl*3,bl*2+bl/2);
+        controlCtx.strokeRect(0,heblock,razX,heblock);
     
     //right        
-        controlCtx.strokeRect(bl*11.5,bl*3,bl*3,bl*2+bl/2);
+        controlCtx.strokeRect(razX*2,heblock,razX,heblock);
 
     //down        
-        controlCtx.strokeRect(dl/2-bl*3/2,bl*6-bl/2,bl*3,bl*2+bl/2);
+        controlCtx.strokeRect(razX,heblock*2,razX,heblock);
     
     
     
     picUp = new Image(); 
      picUp.src = 'img/up-128.png';
         picUp.onload = function() {
-            controlCtx.drawImage(picUp, dl/2-bl*3/2,bl-bl/2,bl*3,bl*2+bl/2);
+            controlCtx.drawImage(picUp, razX,0,razX,heblock);
         }
      picDown = new Image(); 
      picDown.src = 'img/down-128.png';
         picDown.onload = function() {
-            controlCtx.drawImage(picDown, dl/2-bl*3/2,bl*6-bl/2,bl*3,bl*2+bl/2);
+            controlCtx.drawImage(picDown, razX,heblock*2,razX,heblock);
         }
      picLeft = new Image(); 
      picLeft.src = 'img/left-128.png';
         picLeft.onload = function() {
-            controlCtx.drawImage(picLeft, bl*5.5,bl*3,bl*3,bl*2+bl/2);
+            controlCtx.drawImage(picLeft, 0,heblock,razX,heblock);
         }
      picRight = new Image(); 
      picRight.src = 'img/right-128.png';
         picRight.onload = function() {
-            controlCtx.drawImage(picRight, bl*11.5,bl*3,bl*3,bl*2+bl/2);
+            controlCtx.drawImage(picRight, razX*2,heblock,razX,heblock);
         }
     
         
         
             startup();
+    var ongoingTouches = [];
     
        function startup() {
           controler.addEventListener("touchstart", handleStart, false);
+          controler.addEventListener("touchmove", handleMove, false);
         }
     
     
@@ -573,28 +616,28 @@ function control(){
               y = touch.pageY - event.target.offsetTop;
   
           for (var i = 0; i < touches.length; i++) {
-      
+              ongoingTouches.push(copyTouch(touches[i]));
        // var x = touch.pageX - event.target.offsetLeft,
     //        y = touch.pageY - event.target.offsetTop;
-              
+             ongoingTouches.push(copyTouch(touches[i])); 
             console.log(x+' '+y);
                console.log(x-10+' '+y);
               console.log(touch.radiusX+' '+touch.radiusY);
            
-              //up
-            if((x+touch.radiusX>dl/2-bl*3/2&&x<dl/2-bl*3/2+bl*3+touch.radiusX)&&(y+touch.radiusY>bl-bl/2&&y<bl-bl/2+bl*2+bl/2+touch.radiusY)){
+              //up razX,0,razX,heblock
+            if((x>razX&&x<razX+razX)&&(y>0&&y<heblock)){
                  xv= yv != 1 ?  0 : xv;
                  yv= yv != 1 ? -1 : yv;
-            } //down
-            else if((x+touch.radiusX>dl/2-bl*3/2&&x<dl/2-bl*3/2+bl*3+touch.radiusX)&&(y+touch.radiusY>bl*6-bl/2&&y<bl*6-bl/2+bl*2+bl/2+touch.radiusY)){
+            } //down razX,heblock*2,razX,heblock
+            else if((x>razX&&x<razX+razX)&&(y>heblock*2&&y<heblock*2+heblock)){
                  xv= yv != -1 ? 0 : xv;
                  yv= yv != -1 ? 1 : yv;
-            } //left
-            else if((x+touch.radiusX>bl*5.5&&x<bl*5.5+bl*3+touch.radiusX)&&(y+touch.radiusY>bl*3&&y<bl*3+bl*2+bl/2+touch.radiusY)){
+            } //left 0,heblock,razX,heblock
+            else if((x>0&&x<razX)&&(y>heblock&&y<heblock+heblock)){
                  xv= xv != 1 ? -1 : xv;
                  yv= xv != 1 ?  0 : yv;
-            } //right
-            else if((x+touch.radiusX>bl*11.5&&x<bl*11.5+bl*3+touch.radiusX)&&(y+touch.radiusY>bl*3&&y<bl*3+bl*2+bl/2+touch.radiusY)){
+            } //right razX*2,heblock,razX,heblock
+            else if((x>razX*2&&x<razX*2+razX)&&(y>heblock&&y<heblock+heblock)){
                  xv= xv != -1 ?  1 : xv;
                  yv= xv != -1 ?  0 : yv;
             } 
@@ -610,6 +653,52 @@ function control(){
               
           }
         }  
+     //muvetuchlove
+        function handleMove(event) {
+          event.preventDefault();
+          var touches = event.changedTouches;
+            var touch = event.touches[0];
+          var x = touch.pageX - event.target.offsetLeft, 
+              y = touch.pageY - event.target.offsetTop;
+            
+          for (var i = 0; i < touches.length; i++) {
+           // var color = 'white'; //colorForTouch(touches[i]);
+            //var idx = ongoingTouchIndexById(touches[i].identifier);
+              var idx = ongoingTouchIndexById(touches[i].identifier);
+            if (idx >= 0) {
+             if((x>razX&&x<razX+razX)&&(y>0&&y<heblock)){
+                 xv= yv != 1 ?  0 : xv;
+                 yv= yv != 1 ? -1 : yv;
+            } //down razX,heblock*2,razX,heblock
+            else if((x>razX&&x<razX+razX)&&(y>heblock*2&&y<heblock*2+heblock)){
+                 xv= yv != -1 ? 0 : xv;
+                 yv= yv != -1 ? 1 : yv;
+            } //left 0,heblock,razX,heblock
+            else if((x>0&&x<razX)&&(y>heblock&&y<heblock+heblock)){
+                 xv= xv != 1 ? -1 : xv;
+                 yv= xv != 1 ?  0 : yv;
+            } //right razX*2,heblock,razX,heblock
+            else if((x>razX*2&&x<razX*2+razX)&&(y>heblock&&y<heblock+heblock)){
+                 xv= xv != -1 ?  1 : xv;
+                 yv= xv != -1 ?  0 : yv;
+            } 
+            
+            } 
+          }
+        }
+                function copyTouch(touch) {
+                    return { identifier: touch.identifier, pageX: touch.pageX, pageY: touch.pageY };
+                    }
+                function ongoingTouchIndexById(idToFind) {
+                      for (var i = 0; i < ongoingTouches.length; i++) {
+                        var id = ongoingTouches[i].identifier;
+
+                        if (id == idToFind) {
+                          return i;
+                        }
+                      }
+                      return -1;    // not found
+                    }
       }    
 function control2(){
     
@@ -722,6 +811,8 @@ function control2(){
             
 
         }
+   
+    
     
     /*
     function startup() {
@@ -836,7 +927,7 @@ function move(){
 
 function keyPush(event){   
     muvet = event.keyCode;
-    console.log(muvet);
+    //console.log(muvet);
     if(buttondown != 0){
         if(muvet == 37 && xv != 1){
             xv=-1;yv=0; 
@@ -953,3 +1044,5 @@ function keyPush(event){
            
         } 
     */
+
+
