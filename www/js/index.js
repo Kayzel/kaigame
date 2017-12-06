@@ -33,6 +33,10 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     
+    registerAdEvents: function() {
+      document.addEventListener(admob.events.onAdLoaded, onAdLoaded);
+    },
+    
     funcBanner: function(){
             admob.setOptions({
                     publisherId: "ca-app-pub-2752832807213349/2584278507",
@@ -58,9 +62,9 @@ var app = {
         //alert('вторая ступень, найдены параметры рекламы');
         
         admob.createBannerView();
-        app.receivedEvent();
-        admob.requestInterstitialAd();
         
+        admob.requestInterstitialAd();
+        app.receivedEvent();
        
         
         //document.getElementById('filedMenu');
@@ -77,6 +81,16 @@ var app = {
         for(var i = 0; i<menue.length; i++){
             menue[i].style.display = 'block';
         }
+        onAdLoaded();
+    },
+    
+    onAdLoaded: function(e) {
+      if (isAppForeground) {
+         if (e.adType === admob.AD_TYPE.BANNER) {
+          alert("New banner received");
+             razposcontroler();
+        }
+      }
     }
     // Update DOM on a Received Event
 };

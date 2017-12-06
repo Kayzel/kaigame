@@ -556,8 +556,18 @@ function start() {
     }
 
 
+function razposcontroler(){
+    var wid = dl;
+    var xakh = canvas.offsetHeight;// - canvas.clientHeight;
+    var hexs = canvas.offsetTop;
+    var heig = Wbox;
+    var newHei = heig-(hexs+xakh)-90;
+    controler.width = wid;
+    controler.height = newHei;
+}
+
 function control(){
-    
+    razposcontroler();
        controler = document.getElementById('control');
        controlCtx = controler.getContext('2d'); 
     
@@ -570,11 +580,11 @@ function control(){
     var newHei = heig.height-(xak.x+xak.height)-30;
     */
     var razX = dl/3;
-    var wid = dl;
+    
     var xakh = canvas.offsetHeight;// - canvas.clientHeight;
     var hexs = canvas.offsetTop;
     var heig = Wbox;
-    var newHei = heig-(hexs+xakh)-2;
+    var newHei = heig-(hexs+xakh)-90;
     //console.log(heig+' '+hexs+' '+xakh+' '+30);
     
     
@@ -582,8 +592,8 @@ function control(){
     var razY = 0;
     
     
-    controler.width = wid;
-    controler.height = newHei;
+ //   controler.width = wid;
+  //  controler.height = newHei;
     /*
      width: wid,
       height: newHei
