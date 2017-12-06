@@ -34,21 +34,10 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     
     registerAdEvents: function() {
-      document.addEventListener(admob.events.onAdLoaded, onAdLoaded);
-    },
-    
-    onAdLoaded: function(e) {
-      if (isAppForeground) {
-         if (e.adType === admob.AD_TYPE.BANNER) {
-          alert("New banner received");
-             razposcontroler();
-        }
-      }
+      document.addEventListener(admob.events.onAdLoaded, this.onAdLoaded);
     },
     
     funcBanner: function(){
-            registerAdEvents();
-        
             admob.setOptions({
                     publisherId: "ca-app-pub-2752832807213349/2584278507",
                     interstitialAdId: "ca-app-pub-2752832807213349/8368912051",
@@ -78,7 +67,7 @@ var app = {
         
         app.receivedEvent();
        
-        
+        registerAdEvents();
         //document.getElementById('filedMenu');
         
        
@@ -95,6 +84,15 @@ var app = {
         }
         
         
+    },
+    
+    onAdLoaded: function(e) {
+      if (isAppForeground) {
+         if (e.adType === admob.AD_TYPE.BANNER) {
+          alert("New banner received");
+             razposcontroler();
+        }
+      }
     }
     // Update DOM on a Received Event
 };
