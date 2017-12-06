@@ -37,7 +37,18 @@ var app = {
       document.addEventListener(admob.events.onAdLoaded, onAdLoaded);
     },
     
+    onAdLoaded: function(e) {
+      if (isAppForeground) {
+         if (e.adType === admob.AD_TYPE.BANNER) {
+          alert("New banner received");
+             razposcontroler();
+        }
+      }
+    },
+    
     funcBanner: function(){
+            registerAdEvents();
+        
             admob.setOptions({
                     publisherId: "ca-app-pub-2752832807213349/2584278507",
                     interstitialAdId: "ca-app-pub-2752832807213349/8368912051",
@@ -54,7 +65,7 @@ var app = {
     onDeviceReady: function() {
         
        // var showinters = arrec();
-           
+        
         
         app.funcBanner();
        // alert('первая ступень!');
@@ -82,17 +93,8 @@ var app = {
         for(var i = 0; i<menue.length; i++){
             menue[i].style.display = 'block';
         }
-        registerAdEvents();
-        onAdLoaded();
-    },
-    
-    onAdLoaded: function(e) {
-      if (isAppForeground) {
-         if (e.adType === admob.AD_TYPE.BANNER) {
-          alert("New banner received");
-             razposcontroler();
-        }
-      }
+        
+        
     }
     // Update DOM on a Received Event
 };
