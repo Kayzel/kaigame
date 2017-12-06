@@ -557,11 +557,18 @@ function start() {
 
 
 function razposcontroler(){
+    
+    var boxbody = document.getElementsByTagName('body')[0];
+        var Wboxbody = boxbody.clientHeight || boxbody.offsetHeight;
+       
+    
+    
+    
     var wid = dl;
     var xakh = canvas.offsetHeight;// - canvas.clientHeight;
     var hexs = canvas.offsetTop;
-    var heig = Wbox;
-    var newHei = heig-(hexs+xakh)-90;
+    var heig = Wboxbody;
+    var newHei = heig-(hexs+xakh)-2;
     controler.width = wid;
     controler.height = newHei;
 }
@@ -584,7 +591,7 @@ function control(){
     var xakh = canvas.offsetHeight;// - canvas.clientHeight;
     var hexs = canvas.offsetTop;
     var heig = Wbox;
-    var newHei = heig-(hexs+xakh)-90;
+    var newHei = heig-(hexs+xakh)-2;
     //console.log(heig+' '+hexs+' '+xakh+' '+30);
     
     

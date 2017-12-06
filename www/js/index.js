@@ -64,6 +64,7 @@ var app = {
         admob.createBannerView();
         
         admob.requestInterstitialAd();
+        
         app.receivedEvent();
        
         
@@ -81,6 +82,7 @@ var app = {
         for(var i = 0; i<menue.length; i++){
             menue[i].style.display = 'block';
         }
+        registerAdEvents();
         onAdLoaded();
     },
     
