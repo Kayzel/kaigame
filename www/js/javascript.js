@@ -83,6 +83,15 @@
   
            }
         
+        var dl 
+        if(window.screen.width<window.screen.height){
+            var razmX = Hbox;
+            dl = razmX;
+           }else if(window.screen.width>window.screen.height){
+             var razmX = Wbox-280;  
+           dl = razmX;
+           }
+        
         var wid = dl;
         var xak = canvas.getBoundingClientRect();// - canvas.clientHeight;
         var heig = box.getBoundingClientRect();
