@@ -47,6 +47,17 @@
         
      controler = document.getElementById('control');
     controlCtx = controler.getContext('2d'); 
+       //*размер контроля 
+        var wid = dl;
+        var xak = canvas.getBoundingClientRect();// - canvas.clientHeight;
+        var heig = box.getBoundingClientRect();
+        var newHei = heig.height-(xak.x+xak.height)-30;
+        var heblock = newHei/3;
+        controler.width = wid;
+        controler.height = newHei; 
+        
+        
+        
         
     canvas = document.getElementById("snaki");
     ctx = canvas.getContext('2d'); 
@@ -551,8 +562,8 @@ function control(){
     var razY = 0;
     
     
-    controler.width = wid;
-    controler.height = newHei;
+  //  controler.width = wid;
+  //  controler.height = newHei;
     /*
      width: wid,
       height: newHei
