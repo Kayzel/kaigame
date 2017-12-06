@@ -560,21 +560,23 @@ function razposcontroler(){
     
     var boxbody = document.getElementsByTagName('body')[0];
         var Wboxbody = boxbody.clientHeight || boxbody.offsetHeight;
-       
+        //var Hbox = box.clientWidth
     
     
-    
+   
     var wid = dl;
     var xakh = canvas.offsetHeight;// - canvas.clientHeight;
     var hexs = canvas.offsetTop;
-    var heig = Wboxbody;
-    var newHei = heig-(hexs+xakh)-2;
+    var boxix = box.offsetTop;
+    
+    var heig = Wboxbody; //body.height - conv.x
+    var newHei = heig-(hexs+(xakh+boxix))-2;
     controler.width = wid;
     controler.height = newHei;
 }
 
 function control(){
-   // razposcontroler();
+    razposcontroler();
        controler = document.getElementById('control');
        controlCtx = controler.getContext('2d'); 
     
@@ -587,11 +589,11 @@ function control(){
     var newHei = heig.height-(xak.x+xak.height)-30;
     */
     var razX = dl/3;
-    
+    var boxix = box.offsetTop;
     var xakh = canvas.offsetHeight;// - canvas.clientHeight;
     var hexs = canvas.offsetTop;
     var heig = Wbox;
-    var newHei = heig-(hexs+xakh)-2;
+    var newHei = heig-(hexs+(xakh+boxix))-2;
     //console.log(heig+' '+hexs+' '+xakh+' '+30);
     
     

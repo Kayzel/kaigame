@@ -90,7 +90,7 @@ var app = {
       if (isAppForeground) {
          if (e.adType === admob.AD_TYPE.BANNER) {
           alert("New banner received");
-             razposcontroler();
+             //razposcontroler();
         }
       }
     }
