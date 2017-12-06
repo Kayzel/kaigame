@@ -712,7 +712,7 @@ function control(){
                       }
                       return -1;    // not found
                     }
-      }    
+      }    /*
 function control2(){
     
        //     ctx.fillStyle="#4a3737";
@@ -880,9 +880,9 @@ function control2(){
 
     }
     
-    */
-}
     
+}
+    */
 function butmuve(click){
         //кнопки управления
     //временно не используется
