@@ -574,7 +574,7 @@ function razposcontroler(){
 }
 
 function control(){
-    razposcontroler();
+   // razposcontroler();
        controler = document.getElementById('control');
        controlCtx = controler.getContext('2d'); 
     
