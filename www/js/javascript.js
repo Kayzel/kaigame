@@ -522,12 +522,12 @@ stopGame.onclick = function(){
 */ 
 
 function start() { 
+        ctx.clearRect(0,0,canvas.width,canvas.height);
         luser = false;
         stopGame.style.display = 'inline';
         buttondown = plusRA;
         randomRA();
         clearInterval(kuk);
-        ctx.clearRect(0,0,canvas.width,canvas.height);
         control();
         document.addEventListener("keydown", keyPush);
         kuk = setInterval(game,speadSnake);   
@@ -536,18 +536,20 @@ function start() {
 
 function control(){
     
+       controler = document.getElementById('control');
+       controlCtx = controler.getContext('2d'); 
+    
+    
     var wid = dl;
     var razX = dl/3;
-    //canvas.width+'px';
     var xak = canvas.getBoundingClientRect();// - canvas.clientHeight;
     var heig = box.getBoundingClientRect();
    
     var newHei = heig.height-(xak.x+xak.height)-30;
-    console.log(newHei);
-    console.log(heig);
+    
     var heblock = newHei/3;
     var razY = 0;
-    console.log(wid);
+    
     
     controler.width = wid;
     controler.height = newHei;
@@ -706,8 +708,7 @@ function control2(){
      //   ctx.fillRect(0,bl*20,dl,bl*5);
     
     
-      //   controler = document.getElementById('control');
-  //  controlCtx = controler.getContext('2d'); 
+
 
             controlCtx.strokeStyle="#ed8f62";
         controlCtx.strokeRect(bl*2,bl*2+bl/2,bl*3,bl*2+bl/2);
