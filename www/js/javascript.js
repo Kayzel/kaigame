@@ -50,7 +50,9 @@
         
     canvas = document.getElementById("snaki");
     ctx = canvas.getContext('2d'); 
-    canvas.style.zIndex = 7;    
+    canvas.style.zIndex = 7;   
+        var Wcanbox = canvas.clientHeight || canvas.offsetHeight;
+        var Hcanbox = canvas.clientWidth || canvas.offsetWidth;
         if(window.screen.width<window.screen.height){
             var razmX = Hbox;
             //alert(razmX);
@@ -93,13 +95,15 @@
            }
         
         var wid = dl;
-        var xak = canvas.getBoundingClientRect();// - canvas.clientHeight;
-        var heig = box.getBoundingClientRect();
-        alert(xak);
-        var newHei = heig.height-(xak.x+xak.height)-30;
+        var xakh = canvas.offsetHeight;// - canvas.clientHeight;
+        var hexs = canvas.offsetTop;
+        var heig = Wbox;
+        var newHei = heig-(hexs+xakh)-2;
+        console.log(heig+' '+hexs+' '+xakh+' '+30);
         var heblock = newHei/3;
-        //controler.width = wid;
-       // controler.height = newHei; 
+        
+        controler.width = wid;
+        controler.height = newHei; 
        /* var p = document.getElementById('log');  
           p.style.marginTop = canvas.height+'px';   */
         //    alert('ширина '+window.screen.width+' / высота '+window.screen.height);
@@ -557,13 +561,22 @@ function control(){
        controler = document.getElementById('control');
        controlCtx = controler.getContext('2d'); 
     
-    
+    /*
     var wid = dl;
-    var razX = dl/3;
+    
     var xak = canvas.getBoundingClientRect();// - canvas.clientHeight;
     var heig = box.getBoundingClientRect();
    
     var newHei = heig.height-(xak.x+xak.height)-30;
+    */
+    var razX = dl/3;
+    var wid = dl;
+    var xakh = canvas.offsetHeight;// - canvas.clientHeight;
+    var hexs = canvas.offsetTop;
+    var heig = Wbox;
+    var newHei = heig-(hexs+xakh)-2;
+    console.log(heig+' '+hexs+' '+xakh+' '+30);
+    
     
     var heblock = newHei/3;
     var razY = 0;
