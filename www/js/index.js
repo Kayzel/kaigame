@@ -36,7 +36,7 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     
     registerAdEvents: function() {
-      document.addEventListener(admob.events.onAdLoaded, this.onAdLoaded);
+      document.addEventListener(admob.events.onAdLoaded, onAdLoaded);
     },
     
     funcBanner: function(){
@@ -69,7 +69,7 @@ var app = {
         
         app.receivedEvent();
        
-        registerAdEvents();
+        
         //document.getElementById('filedMenu');
         
        
@@ -85,6 +85,9 @@ var app = {
             menue[i].style.display = 'block';
         }
         alert("New banner received1");
+        
+        registerAdEvents();
+        
         function onAdLoaded(e) {
           
              if (e.adType === admob.AD_TYPE.BANNER) {
@@ -93,15 +96,15 @@ var app = {
             }
           
         }
-    },
+    }
     
-    onAdLoaded: function(e) {
+   /* onAdLoaded: function(e) {
 //      if (isAppForeground) {
          if (e.adType === admob.AD_TYPE.BANNER) {
           alert("New banner received");
              //razposcontroler();
         }
       //}
-    }
+    }*/
     // Update DOM on a Received Event
 };
