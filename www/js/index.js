@@ -34,7 +34,7 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     
     registerAdEvents: function() {
-      document.addEventListener(admob.events.onAdLoaded, this.onAdLoaded, false);
+      document.addEventListener(admob.events.onAdLoaded, onAdLoaded);
     },
     
     funcBanner: function(){
