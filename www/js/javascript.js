@@ -569,8 +569,8 @@ function control(){
     var boxconv = document.getElementById('conv');
     
     
-     var boxbody = document.getElementsByTagName('body')[0];
-        var Wboxbody = boxbody.clientHeight || boxbody.offsetHeight;
+    var boxbody = document.getElementsByTagName('body')[0];
+    var Wboxbody = boxbody.clientHeight || boxbody.offsetHeight;
     var wid = dl;
     var razX = dl/3;
     var boxix = boxconv.offsetTop;
