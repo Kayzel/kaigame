@@ -34,7 +34,7 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     
     registerAdEvents: function() {
-      document.addEventListener(admob.events.onAdLoaded, this.onAdLoaded);
+      document.addEventListener(admob.events.onAdLoaded, this.onAdLoaded, false);
     },
     
     funcBanner: function(){
@@ -63,7 +63,7 @@ var app = {
         
         admob.createBannerView();
         
-        admob.requestInterstitialAd();
+       // admob.requestInterstitialAd();
         
         app.receivedEvent();
        
@@ -82,8 +82,15 @@ var app = {
         for(var i = 0; i<menue.length; i++){
             menue[i].style.display = 'block';
         }
-        
-        
+        alert("New banner received1");
+        function onAdLoaded(e) {
+          if (isAppForeground) {
+             if (e.adType === admob.AD_TYPE.BANNER) {
+              alert("New banner received2");
+                 //razposcontroler();
+            }
+          }
+        }
     },
     
     onAdLoaded: function(e) {
