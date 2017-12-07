@@ -42,10 +42,10 @@ var app = {
             
                       if (e.adType === admob.AD_TYPE.BANNER) {
                           if(!luser){
-                              
-                                    var boxconv = document.getElementById('conv');
-                                    var boxix = boxconv.offsetTop;
-                              alert(boxix);
+//                              
+//                                    var boxconv = document.getElementById('conv');
+//                                    var boxix = boxconv.offsetTop;
+//                                    alert(boxix);
 //                                    var boxbody = document.getElementsByTagName('body')[0];
 //                                    var Wboxbody = boxbody.clientHeight || boxbody.offsetHeight;
 //                                    
@@ -59,6 +59,17 @@ var app = {
                               control();}
                       }
          });
+        document.addEventListener(admob.events.onAdOpened, function (e) {
+            if (e.adType === admob.AD_TYPE.BANNER){
+                control();
+            }
+        });
+              document.addEventListener(admob.events.onAdFailedToLoad, function (e) {
+                  if (e.adType === admob.AD_TYPE.BANNER){
+                      control();
+                  }
+              });
+      
     },
     
     funcBanner: function(){
