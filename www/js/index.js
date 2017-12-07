@@ -55,7 +55,7 @@ var app = {
                       }
          });
         document.addEventListener(admob.events.onAdOpened, function (e) {
-            alert('open');
+            //alert('open');
             if (e.adType === admob.AD_TYPE.BANNER){
              
                 //console.log(heig+' '+hexs+' '+xakh+' '+30);
