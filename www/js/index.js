@@ -21,6 +21,7 @@
 var app = {
     // Application Constructor
     initialize: function() {
+        alert(boxix);
         this.bindEvents();
     },
     // Bind Event Listeners
@@ -43,18 +44,18 @@ var app = {
                           if(!luser){
                               
                                     var boxconv = document.getElementById('conv');
-                                    var boxbody = document.getElementsByTagName('body')[0];
-                                    var Wboxbody = boxbody.clientHeight || boxbody.offsetHeight;
                                     var boxix = boxconv.offsetTop;
-                                    var xakh = boxconv.offsetHeight;// - canvas.clientHeight;
-                                    var heig = Wboxbody;
-                                    var newHei = heig-(xakh+boxix)-2;
+                              alert(boxix);
+//                                    var boxbody = document.getElementsByTagName('body')[0];
+//                                    var Wboxbody = boxbody.clientHeight || boxbody.offsetHeight;
+//                                    
+//                                    var xakh = boxconv.offsetHeight;// - canvas.clientHeight;
+//                                    var heig = Wboxbody;
+//                                    var newHei = heig-(xakh+boxix)-2;
                               
-                              setInterval(enm,1000);
                               
-                              function enm(){
-                                  alert('банер'+newHei);
-                              }
+                              
+                             
                               control();}
                       }
          });
