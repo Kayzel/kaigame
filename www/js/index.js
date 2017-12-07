@@ -38,9 +38,9 @@ var app = {
     registerAdEvents: function() {
      // document.addEventListener(admob.events.onAdLoaded, onAdLoaded);
          document.addEventListener(admob.events.onAdLoaded, function (e) {
-             alert("New banner received2");
+            
                       if (e.adType === admob.AD_TYPE.BANNER) {
-                        alert("New banner received2");
+                            razposcontroler();
                       }
          });
     },
@@ -90,11 +90,11 @@ var app = {
         for(var i = 0; i<menue.length; i++){
             menue[i].style.display = 'block';
         }
-        alert("New banner received1");
+       
         
         app.registerAdEvents();
         
-        alert("New banner received1");
+        
         function onAdLoaded(e) {
           
              if (e.adType === admob.AD_TYPE.BANNER) {
