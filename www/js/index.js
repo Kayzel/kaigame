@@ -40,8 +40,8 @@ var app = {
          document.addEventListener(admob.events.onAdLoaded, function (e) {
             
                       if (e.adType === admob.AD_TYPE.BANNER) {
-                          if(!luser){alert('vizval Control()');
-                              control();}
+                          if(!luser){
+                            setTimeout(control(), 1000);}
                       }
          });
     },
