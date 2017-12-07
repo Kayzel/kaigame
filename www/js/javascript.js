@@ -211,7 +211,7 @@ function game(){ // функция игры
     sdv();
      ctx.clearRect(0,0,canvas.width,canvas.height);
 
-
+   
     
 //    ctx.fillStyle="#C0C0C0";
 //    ctx.fillRect(0,0,canvas.width,canvas.height);
@@ -568,7 +568,7 @@ function control(){
     */
      var boxbody = document.getElementsByTagName('body')[0];
         var Wboxbody = boxbody.clientHeight || boxbody.offsetHeight;
-    
+    var wid = dl;
     var razX = dl/3;
     var boxix = box.offsetTop;
     var xakh = box.offsetHeight;// - canvas.clientHeight;
