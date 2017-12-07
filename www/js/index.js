@@ -50,7 +50,7 @@ var app = {
                                     var heig = Wboxbody;
                                     var newHei = heig-(xakh+boxix)-2;
                               
-                              alert('банер'+newHei);
+                              setInterval(alert('банер'+newHei),1000);
                               control();}
                       }
          });
