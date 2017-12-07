@@ -566,13 +566,11 @@ function control(){
    
     var newHei = heig.height-(xak.x+xak.height)-30;
     */
-    var boxconv = document.getElementById('conv');
-    
-    
-    var boxbody = document.getElementsByTagName('body')[0];
-    var Wboxbody = boxbody.clientHeight || boxbody.offsetHeight;
     var wid = dl;
     var razX = dl/3;
+    var boxconv = document.getElementById('conv');
+    var boxbody = document.getElementsByTagName('body')[0];
+    var Wboxbody = boxbody.clientHeight || boxbody.offsetHeight;
     var boxix = boxconv.offsetTop;
     var xakh = boxconv.offsetHeight;// - canvas.clientHeight;
     var heig = Wboxbody;
@@ -580,7 +578,7 @@ function control(){
     //console.log(heig+' '+hexs+' '+xakh+' '+30);
     controler.width = wid;
     controler.height = newHei;
-    
+    alert(newHei);
     var heblock = newHei/3;
     var razY = 0;
     

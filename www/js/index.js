@@ -41,7 +41,17 @@ var app = {
             
                       if (e.adType === admob.AD_TYPE.BANNER) {
                           if(!luser){
-                            setTimeout(control(), 1000);}
+                              
+                                    var boxconv = document.getElementById('conv');
+                                    var boxbody = document.getElementsByTagName('body')[0];
+                                    var Wboxbody = boxbody.clientHeight || boxbody.offsetHeight;
+                                    var boxix = boxconv.offsetTop;
+                                    var xakh = boxconv.offsetHeight;// - canvas.clientHeight;
+                                    var heig = Wboxbody;
+                                    var newHei = heig-(xakh+boxix)-2;
+                              
+                              alert(newHei);
+                              control();}
                       }
          });
     },
