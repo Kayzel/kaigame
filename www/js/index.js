@@ -21,7 +21,7 @@
 var app = {
     // Application Constructor
     initialize: function() {
-        alert(boxix);
+        
         this.bindEvents();
     },
     // Bind Event Listeners
