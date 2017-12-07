@@ -92,7 +92,7 @@ var app = {
         }
         alert("New banner received1");
         
-        registerAdEvents();
+        app.registerAdEvents();
         
         alert("New banner received1");
         function onAdLoaded(e) {
