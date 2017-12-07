@@ -41,7 +41,7 @@ var app = {
          document.addEventListener(admob.events.onAdLoaded, function (e) {
             
                       if (e.adType === admob.AD_TYPE.BANNER) {
-                          if(!luser){
+                       
 //                              
 //                                    var boxconv = document.getElementById('conv');
 //                                    var boxix = boxconv.offsetTop;
@@ -52,16 +52,23 @@ var app = {
 //                                    var xakh = boxconv.offsetHeight;// - canvas.clientHeight;
 //                                    var heig = Wboxbody;
 //                                    var newHei = heig-(xakh+boxix)-2;
-                              
-                              
-                              
-                             
-                              control();}
                       }
          });
         document.addEventListener(admob.events.onAdOpened, function (e) {
             if (e.adType === admob.AD_TYPE.BANNER){
-                control();
+                var wid = dl;
+                var boxconv = document.getElementById('conv');
+                var boxbody = document.getElementsByTagName('body')[0];
+                var Wboxbody = boxbody.clientHeight || boxbody.offsetHeight;
+                var boxix = boxconv.offsetTop;
+                var xakh = boxconv.offsetHeight;// - canvas.clientHeight;
+                var heig = Wboxbody;
+                var newHei = heig-(xakh+boxix)-2;
+                //console.log(heig+' '+hexs+' '+xakh+' '+30);
+                controler.width = wid;
+                controler.height = newHei;
+                alert(newHei);
+                
             }
         });
               document.addEventListener(admob.events.onAdFailedToLoad, function (e) {
