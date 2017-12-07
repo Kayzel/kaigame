@@ -36,7 +36,13 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     
     registerAdEvents: function() {
-      document.addEventListener(admob.events.onAdLoaded, onAdLoaded);
+     // document.addEventListener(admob.events.onAdLoaded, onAdLoaded);
+         document.addEventListener(admob.events.onAdLoaded, function (e) {
+             alert("New banner received2");
+                      if (e.adType === admob.AD_TYPE.BANNER) {
+                        alert("New banner received2");
+                      }
+         });
     },
     
     funcBanner: function(){
@@ -88,6 +94,7 @@ var app = {
         
         registerAdEvents();
         
+        alert("New banner received1");
         function onAdLoaded(e) {
           
              if (e.adType === admob.AD_TYPE.BANNER) {
