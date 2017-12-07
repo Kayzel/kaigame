@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-var isAppForeground = true;
+//var isAppForeground = true;
 
 var app = {
     // Application Constructor
@@ -86,22 +86,22 @@ var app = {
         }
         alert("New banner received1");
         function onAdLoaded(e) {
-          if (isAppForeground) {
+          
              if (e.adType === admob.AD_TYPE.BANNER) {
               alert("New banner received2");
                  //razposcontroler();
             }
-          }
+          
         }
     },
     
     onAdLoaded: function(e) {
-      if (isAppForeground) {
+//      if (isAppForeground) {
          if (e.adType === admob.AD_TYPE.BANNER) {
           alert("New banner received");
              //razposcontroler();
         }
-      }
+      //}
     }
     // Update DOM on a Received Event
 };
