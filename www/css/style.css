@@ -135,7 +135,11 @@ width: 100%;
 #filedMenu button:focus{
     outline: none;
 }
-
+#load{
+    color: #ed8f62;
+    text-align: center;
+    font-size: 35px;
+}
 .menuItem{
     color: #ed8f62;
 /*    display: none;*/

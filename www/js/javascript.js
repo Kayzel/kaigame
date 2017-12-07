@@ -578,7 +578,7 @@ function control(){
     //console.log(heig+' '+hexs+' '+xakh+' '+30);
     controler.width = wid;
     controler.height = newHei;
-    alert(newHei);
+   // alert(newHei);
     var heblock = newHei/3;
     var razY = 0;
     

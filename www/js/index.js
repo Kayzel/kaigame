@@ -41,7 +41,7 @@ var app = {
          document.addEventListener(admob.events.onAdLoaded, function (e) {
             
                       if (e.adType === admob.AD_TYPE.BANNER) {
-                       alert('load');
+                      // alert('load');
 //                              
 //                                    var boxconv = document.getElementById('conv');
 //                                    var boxix = boxconv.offsetTop;
@@ -57,22 +57,15 @@ var app = {
         document.addEventListener(admob.events.onAdOpened, function (e) {
             alert('open');
             if (e.adType === admob.AD_TYPE.BANNER){
-                var wid = dl;
-                var boxconv = document.getElementById('conv');
-                var boxbody = document.getElementsByTagName('body')[0];
-                var Wboxbody = boxbody.clientHeight || boxbody.offsetHeight;
-                var boxix = boxconv.offsetTop;
-                var xakh = boxconv.offsetHeight;// - canvas.clientHeight;
-                var heig = Wboxbody;
-                var newHei = heig-(xakh+boxix)-2;
+             
                 //console.log(heig+' '+hexs+' '+xakh+' '+30);
-                alert(newHei);
+               // alert(newHei);
                 app.menublock();
             }
         });
               document.addEventListener(admob.events.onAdFailedToLoad, function (e) {
                   if (e.adType === admob.AD_TYPE.BANNER){
-                      alert('filed');
+                     // alert('filed');
                       app.menublock();
                   }
               });
@@ -125,6 +118,8 @@ var app = {
         
     },
     menublock: function(){
+        var load = document.getElementById('load');
+        load.style.display = 'none';
         var menue = document.getElementsByClassName('menuItem');
             for(var i = 0; i<menue.length; i++){
                 menue[i].style.display = 'block';
