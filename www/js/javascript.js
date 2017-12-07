@@ -186,7 +186,7 @@ var level1, level2, level3, level4, level5; //ур сложности
 var plusRA = 0; // переменная уровня сложности
 var luser = false;
 var speadSnake = 100;
-var boxixif = box.offsetTop;
+
 
 
 function sdv(){
@@ -210,11 +210,7 @@ function sdv(){
 function game(){ // функция игры
     sdv();
      ctx.clearRect(0,0,canvas.width,canvas.height);
-    if(boxixif!=box.offsetTop){
-        boxixif = box.offsetTop;
-        control();
-    }
-    console.log(box.offsetTop+' '+boxixif);
+
 
     
 //    ctx.fillStyle="#C0C0C0";
