@@ -16,6 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+var isAppForeground = true;
+
 var app = {
     // Application Constructor
     initialize: function() {
@@ -34,7 +36,7 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     
     registerAdEvents: function() {
-      document.addEventListener(admob.events.onAdLoaded, onAdLoaded);
+      document.addEventListener(admob.events.onAdLoaded, this.onAdLoaded);
     },
     
     funcBanner: function(){
