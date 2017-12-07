@@ -41,7 +41,7 @@ var app = {
          document.addEventListener(admob.events.onAdLoaded, function (e) {
             
                       if (e.adType === admob.AD_TYPE.BANNER) {
-                       
+                       alert('load');
 //                              
 //                                    var boxconv = document.getElementById('conv');
 //                                    var boxix = boxconv.offsetTop;
@@ -55,6 +55,7 @@ var app = {
                       }
          });
         document.addEventListener(admob.events.onAdOpened, function (e) {
+            alert('open');
             if (e.adType === admob.AD_TYPE.BANNER){
                 var wid = dl;
                 var boxconv = document.getElementById('conv');
@@ -65,15 +66,14 @@ var app = {
                 var heig = Wboxbody;
                 var newHei = heig-(xakh+boxix)-2;
                 //console.log(heig+' '+hexs+' '+xakh+' '+30);
-                controler.width = wid;
-                controler.height = newHei;
                 alert(newHei);
-                
+                app.menublock();
             }
         });
               document.addEventListener(admob.events.onAdFailedToLoad, function (e) {
                   if (e.adType === admob.AD_TYPE.BANNER){
-                      control();
+                      alert('filed');
+                      app.menublock();
                   }
               });
       
@@ -120,23 +120,17 @@ var app = {
     },
     
     receivedEvent: function(){
-      var menue = document.getElementsByClassName('menuItem');
-        for(var i = 0; i<menue.length; i++){
-            menue[i].style.display = 'block';
-        }
+
        
         
         app.registerAdEvents();
         
-        
-        function onAdLoaded(e) {
-          
-             if (e.adType === admob.AD_TYPE.BANNER) {
-              alert("New banner received2");
-                 //razposcontroler();
+    },
+    menublock: function(){
+        var menue = document.getElementsByClassName('menuItem');
+            for(var i = 0; i<menue.length; i++){
+                menue[i].style.display = 'block';
             }
-          
-        }
     }
     
    /* onAdLoaded: function(e) {
