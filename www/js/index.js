@@ -121,8 +121,6 @@ var app = {
     
     receivedEvent: function(){
 
-       
-        
         app.registerAdEvents();
         
     },
