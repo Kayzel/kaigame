@@ -184,7 +184,7 @@ var buttondown = 0; // переменная уровня сложности
 var rottenApple; // сомнительная переменная
 var level1, level2, level3, level4, level5; //ур сложности
 var plusRA = 0; // переменная уровня сложности
-var luser = false;
+var luser = true;
 var speadSnake = 100;
 
 
@@ -554,27 +554,7 @@ function start() {
         kuk = setInterval(game,speadSnake);   
     }
 
-
-function razposcontroler(){
-    
-    var boxbody = document.getElementsByTagName('body')[0];
-        var Wboxbody = boxbody.clientHeight || boxbody.offsetHeight;
-        //var Hbox = box.clientWidth
-    
-    
-   
-    var wid = dl;
-    var boxix = box.offsetTop;
-    var xakh = box.offsetHeight;// - canvas.clientHeight;
-    var heig = Wboxbody;
-    var newHei = heig-(xakh+boxix)-2;
-    
-    controler.width = wid;
-    controler.height = newHei;
-}
-
 function control(){
-    razposcontroler();
        controler = document.getElementById('control');
        controlCtx = controler.getContext('2d'); 
     
@@ -595,7 +575,8 @@ function control(){
     var heig = Wboxbody;
     var newHei = heig-(xakh+boxix)-2;
     //console.log(heig+' '+hexs+' '+xakh+' '+30);
-    
+    controler.width = wid;
+    controler.height = newHei;
     
     var heblock = newHei/3;
     var razY = 0;
